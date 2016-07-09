@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebEAD.Areas.Extranet.Models.ContentMetadado>
+
+@{
+    Layout = null;
+    WebGrid grid = new WebGrid(Model, canPage: true, rowsPerPage: 6);
+}
+
+@grid.GetHtml(
+    tableStyle: "ui celled inverted blue table foot",
+    footerStyle: "footRow",
+    headerStyle: "headRow",
+    rowStyle: "bodyRow",
+    alternatingRowStyle: "bodyRow",
+    fillEmptyRows: false,
+    mode: WebGridPagerModes.All,
+    firstText: "Primeiro",
+    previousText: "Anterior",
+    nextText: "Próximo",
+    lastText: "Último",
+    columns: grid.Columns(
+        grid.Column("econt_id", header: "ID", format: @<a>@item.econt_id</a>),
+        grid.Column("econt_titulo", header: "Titulo", format: @<p>@item.econt_titulo</p>),
+        grid.Column("dp_descricao", header: "Disciplina", format: @<p>@item.dp_descricao</p>),
+        grid.Column("mod_descricao", header: "Modulo", format: @<p>@item.mod_descricao</p>),
+        grid.Column("econt_datapublicacao", header: "Data Publicação", format: (item) => string.Format("{0:dd/MM/yyyy}", item.econt_datapublicacao)),
+        grid.Column("econt_datafinalizacao", header: "Data Finalização", format: (item) => string.Format("{0:dd/MM/yyyy}", item.econt_datafinalizacao)),
+        grid.Column("st_descricao", header: "Status", format:@<p>@item.st_descricao</p>),
+        grid.Column("Opções", format: @<text>
+            <a class="ui small blue icon button" href="@Url.Action("EditDidacticContent", "Content", new { id = item.econt_id })">
+                <i class="edit icon"></i>
+                Editar
+            </a>
+            <a class="ui small blue icon button" href="@Url.Action("DetailsArchives", "Content", new { id = item.econt_id })">
+                <i class="archive icon"></i>
+                Arquivos
+            </a>
+        </text>, style: "opcoes", canSort: false))
+)

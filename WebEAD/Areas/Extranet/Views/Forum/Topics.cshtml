@@ -1,0 +1,221 @@
+﻿@{
+    ViewBag.Title = "Tópicos";
+    <script type="text/javascript">
+        var selecionado, selecionadoFiltro, check;
+        var div = $("#filtroForum");
+        $(function () {
+            $('.ui.small.modal.create').hide();
+            $('#ADDTopico').click(function (e) {
+                e.preventDefault();
+                $('.ui.small.modal.create')
+                    .modal({
+                closable: false,
+                        onHide: function() {
+                        return false;
+                    },
+                        onDeny: function() {
+                        return false;
+                    },
+                        onApprove: function () {
+                        if (!validaCampos()) {
+                            return false;
+                        }
+                        limpaCampos();
+                    }
+                })
+                    .modal('show');
+            });
+
+            $('#btnSave').click(function () {
+                if (validaCampos()) {
+                    var descricao = $('#ftpc_descricao').val();
+                    var status;
+                    if ($('#ftpc_st_id').is(':checked')) { status = 1; } else { status = 2; }
+                    var disciplina = selecionado;
+                    var Dados = {
+                        ftpc_descricao: $('#ftpc_descricao').val(),
+                        ftpc_st_id: status,
+                        ftpc_dp_id: selecionado
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("CreateTopics", "Forum")",
+                        data: JSON.stringify(Dados),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data.msg == "Salvo") {
+                                toastr.success("Tópico salvo com sucesso!", "Mensagem do Sistema");
+                                reloadGrid();
+                            }
+                            else {
+                                toastr.error("Tópico não salvo. Entre em contato com o suporte", "Mensagem do Sistema");
+                                reloadGrid();
+                            }
+                        }
+                    });
+                }
+            });
+
+            $('#btnFiltro').click(function () {
+                var status, disciplina;
+
+                if ($('#ftpc_st_idF').is(":checked")) {
+                    check = $('#ftpc_st_idF').val();
+                }
+                else {
+                    check = null;
+                }
+                var selecionadoFinal;
+                if(selecionadoFiltro == null || selecionadoFiltro == ""){
+                    selecionadoFinal = "0";
+                }
+                else{selecionadoFinal = "1";}
+                if (check == null && selecionadoFinal == "0") {
+                    toastr.error("Selecione um item para realizar o filtro!", "Mensagem do Sistema");
+                }
+                else {
+
+                    if (check == "on") {
+                        status = 2;
+                    } else { status = 0; }
+                    if (selecionadoFiltro != null) {
+                        disciplina = selecionadoFiltro
+                    } else { disciplina = 0; }
+                    $.ajax({
+                        url: '@Url.Action("GridForumFilter", "Forum")',
+                        dataType: 'html',
+                        data: { disciplina: disciplina, status: status },
+                        traditional: true,
+                        type: 'POST',
+                        success: function (content) {
+                            $("#filtroForum").html('');
+                            $("#filtroForum").html(content);
+                            toastr.success("Filtro executado com sucesso!", "Mensagem do Sistema");
+                        }
+                    });
+                };
+            });
+
+            $("#btnremoveFiltro").click(function () {
+                reloadGrid();
+                $('#ftpc_dp_idF option[value=""]').prop('selected', true);
+                $("#ftpc_st_idF").prop("checked", false);
+                selecionadoFiltro = "0";
+                check = "off";
+            });
+        });
+
+        function reloadGrid() {
+            $.ajax({
+                url: '@Url.Action("GridForum", "Forum")',
+                dataType: 'html',
+                data: {},
+                traditional: true,
+                type: 'POST',
+                success: function (content) {
+                    $("#filtroForum").html('');
+                    $("#filtroForum").html(content);
+                }
+            });
+        };
+
+        function limpaCampos() {
+            $('#ftpc_dp_id option[value=""]').prop('selected', true);
+            $("#ftpc_st_id").prop("checked", false);
+            $('#ftpc_descricao').val('');
+        };
+
+        function validaCampos() {
+            $('.validaTS').text("");
+            $('.validaTD').text("");
+            $('.validaTDD').text("");
+        var conta = 0;
+        var descricao = $('#ftpc_descricao').val();
+        var status = $('#ftpc_st_id').val();
+        var disciplina;
+        if (selecionado == null) {
+            disciplina = "";
+        }
+        else {
+            disciplina = selecionado;
+        }
+        if (descricao != "") { conta = 1; $('.validaTD').text(""); } else { $('.validaTD').text("Informe a Descrição"); }
+        if ($('#ftpc_st_id').is(":checked")) { conta += 1; $('.validaTS').text(""); } else { $('.validaTS').text("Informe o Status"); }
+        if (disciplina != "") { conta += 1; $('.validaTDD').text(""); } else { $('.validaTDD').text("Informe a Disciplina"); }
+        if (conta == 3) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    </script>
+}
+
+<div class="ui grid specialIDP">
+    <div class="sixteen wide blue text column centered">
+        <h1 class="">Tópicos | Forum</h1>
+    </div>
+</div>
+
+<div class="ui grid centered">
+    <div class="three wide column">
+        <a class="ui labeled blue icon button" id="ADDTopico">
+            <i class="add square icon"></i>
+            Novo Tópico
+        </a>
+    </div>
+    <div class="four wide column"></div>
+    <div class="eight wide column">
+        <div class="ui grid">
+            <div class="one wide text middle column">
+                Filtro:
+            </div>
+            <div class="seven wide column">
+                @Html.Action("SubjectDropdownListFilter", "Forum")
+            </div>
+            <div class="four wide column">
+                <div class="ui checkbox">
+                    <input type="checkbox" name="ftpc_st_idF" id="ftpc_st_idF">
+                    <label>Desativado?</label>
+                </div>
+            </div>
+            <div class="one wide column">
+                <a id="btnFiltro" class="ui blue right icon button" title="Filtrar">
+                    <i class="filter icon"></i>
+                </a>
+            </div>
+            <div class="one wide column">
+                <a id="btnremoveFiltro" class="ui blue right icon button" title="Remove Filtro">
+                    <i class="refresh icon"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui grid centered">
+    <div class="fifteen wide column filtroForum" id="filtroForum">
+        @Html.Action("GridForum")
+    </div>
+</div>
+
+<div class="ui small modal create">
+    @Html.Action("CreateTopics")
+</div>
+<div class="ui grid"></div>
+
+<script type="text/javascript">
+    function getval(sel) {
+        selecionado = sel.value;
+    };
+
+    function getvalFiltro(sel) {
+        selecionadoFiltro = sel.value;
+    };
+
+    function showMessage(message) {
+        toastr[message.type](message.content, message.title);
+    };
+</script>

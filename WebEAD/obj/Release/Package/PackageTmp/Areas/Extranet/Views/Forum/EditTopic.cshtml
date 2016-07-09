@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Editar Tópico";
+    <script type="text/javascript">
+        $(function () {
+            var selecionado;
+            var IDD = $('#DISC').val();
+            if(IDD != "")
+            {
+                $('#ftpc_dp_id option[value=' + IDD + ']').prop('selected', true);
+                selecionado = IDD;
+            }
+            $('#btnSave').click(function () {
+                if (validaCampos()) {
+                    var descricao = $('#ftpc_descricao').val();
+                    var id = $('#ftpc_id').val();
+                    var status;
+                    if ($('#ftpc_status').is(':checked')) { status = 1; } else { status = 2; }
+                    var disciplina;
+                    if ($('#DISC').val() != "909090") {
+                        disciplina = $('#DISC').val();
+                    }
+                    else {
+                        disciplina = selecionado;
+                    }
+                    var Dados = {
+                        ftpc_descricao: $('#ftpc_descricao').val(),
+                        ftpc_st_id: status,
+                        ftpc_dp_id: disciplina,
+                        ftpc_id: id
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("EditTopic", "Forum")",
+                        data: JSON.stringify(Dados),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data.msg == "Salvo") {
+                                toastr.success("Tópico salvo com sucesso!", "Mensagem do Sistema");
+                                window.setTimeout('window.location.href = "@Url.Action("Topics", "Forum")"', 5000);
+                            }
+                            else {
+                                toastr.error("Tópico não salvo. Entre em contato com o suporte", "Mensagem do Sistema");
+                                window.setTimeout('window.location.href = "@Url.Action("Topics", "Forum")"', 5000);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+        function validaCampos() {
+            $('.validaTS').text("");
+            $('.validaTD').text("");
+            $('.validaTDD').text("");
+            var conta = 0;
+            var descricao = $('#ftpc_descricao').val();
+            var status = $('#ftpc_status').val();
+            var disciplina;
+            if ($('#DISC').val() != "909090") {
+                disciplina = $('#DISC').val();
+            }
+            else {
+                disciplina = selecionado;
+            }
+            if (descricao != "") { conta = 1; $('.validaTD').text(""); } else { $('.validaTD').text("Informe a Descrição"); }
+            /*if ($('#ftpc_st_id').is(":checked")) { conta += 1; $('.validaTS').text(""); } else { $('.validaTS').text("Informe o Status"); }*/
+            if (disciplina != "") { conta += 1; $('.validaTDD').text(""); } else { $('.validaTDD').text("Informe a Disciplina"); }
+            if (conta == 2) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        };
+    </script>
+}
+
+<div class="ui grid">
+    <div class="five wide column ">
+        <div class="ui grid">
+            @Html.Action("FormEditTopic", new { id = ViewBag.ID })
+        </div>
+    </div>
+    <div class="ten wide column centered gridf">
+        <div class="ui grid">
+            <div class="sixteen wide column centered">
+                @Html.Action("PostsFixed", new { id = ViewBag.ID })
+            </div>
+        </div>
+        <div class="ui grid">
+            <div class="sixteen wide column centered">
+                @Html.Action("Posts", new { id = ViewBag.ID })
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function getval(sel) {
+        selecionado = sel.value;
+        $('#DISC').val('909090');
+    };
+
+    function showMessage(message) {
+        toastr[message.type](message.content, message.title);
+    };
+</script>

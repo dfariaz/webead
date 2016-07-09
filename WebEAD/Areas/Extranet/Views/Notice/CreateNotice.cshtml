@@ -1,0 +1,72 @@
+﻿@model WebEAD.Areas.Extranet.Models.NoticeMetadado
+
+@{
+    Layout = null;
+}
+<i class="close icon"></i>
+<div class="header">
+    Novo Aviso
+</div>
+<div class="content">
+    <form id="formA" name="formA" method="post" class="ui fluid form">
+        <input type="hidden" value="@ViewBag.IDPF" id="av_pf_id" name="av_pf_id" />
+        <div class="field">
+            <div class="ui left icon input">
+                @Html.EditorFor(model => model.av_titulo, new { htmlAttributes = new { @class = "form-control" } })
+                <div class="ui blue basic label" id="itulo">
+                    <span class="validaT"></span>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui left icon input">
+                <textarea id="av_mensagem" name="av_mensagem"></textarea>
+                <div class="ui blue basic label" id="mensagem">
+                    <span class="validaM"></span>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui left icon input">
+                <div class="ui checkbox">
+                    <input type="checkbox" name="av_g" id="av_g">
+                    <label>Aviso geral?</label>
+                </div>
+                <div class="ui blue basic label" id="status">
+                    <span class="validaAG"></span>
+                </div>
+            </div>
+            <div class="ui left icon input">
+                <div class="ui checkbox">
+                    <input type="checkbox" name="av_d" id="av_d">
+                    <label>Aviso para disciplina?</label>
+                </div>
+                <div class="ui blue basic label" id="statusD">
+                    <span class="validaAD"></span>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui left icon input">
+                @Html.Action("SubjectDropDownList", "Notice")
+                <div class="ui blue basic label" id="disciplinas">
+                    <span class="validaD"></span>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui left icon input">
+                @Html.Action("ClassDropDownList", "Notice")
+                <div class="ui blue basic label" id="turma">
+                    <span class="validaAT"></span>
+                </div>
+            </div>
+        </div>
+        <div class="actions">
+            <a id="btnSaveA" class="ui positive ok right labeled icon button">
+                Salvar
+                <i class="save icon"></i>
+            </a>
+        </div>
+    </form>
+</div>

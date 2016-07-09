@@ -1,0 +1,16 @@
+﻿@model IEnumerable<WebEAD.Areas.EAD.Models.ContentMetadado>
+
+@{
+    ViewBag.Title = "Conteudo Dinamico";
+    Layout = "";
+}
+
+
+<div class="ui container">
+    <h3 class="item">Conteúdos Disponíveis</h3>
+</div>
+
+@foreach (var item in Model)
+{
+    <a class="item" id="linkcopy" data-clipboard-action="copy" data-clipboard-text="@item.econt_id">@item.econt_titulo</a>
+}

@@ -1,0 +1,89 @@
+﻿@model WebEAD.Areas.Extranet.Models.NoticeMetadado
+
+@{
+    Layout = null;
+    if (Model.av_geral == 1) { Model.av_g = true; } else { Model.av_g = false; }
+    if (Model.av_geral == 3) { Model.av_d = true; } else { Model.av_d = false; }
+}
+
+<div class="sixteen wide column">
+    <div class="ui grid specialIDP">
+        <div class="sixteen wide blue text column centered">
+            <h1 class=""> Editar Aviso | ID: @Model.av_id Data Cadastro @Model.av_datacadastro.ToShortDateString()</h1>
+        </div>
+    </div>
+
+    <div class="ui grid">
+        <div class="ten wide column centered">
+            <div class="content">
+
+                <form id="formTE" name="formTE" method="post" class="ui fluid form">
+                    <input type="hidden" value="@Model.av_id" id="av_id" name="av_id" />
+                    <input type="hidden" value="@ViewBag.IDD" id="DISCi" name="DISCi" />
+                    <input type="hidden" value="@ViewBag.IDT" id="TURMAa" name="TURMAa" />
+                    <div class="field">
+                        <div class="ui left icon input">
+                            @Html.TextAreaFor(model => model.av_titulo, new { placeholder = "Titulo" })
+                            <div class="ui blue basic label" id="titulo">
+                                <span class="validaTT"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="ui left icon input">
+                            @Html.TextAreaFor(model => model.av_mensagem, new { placeholder = "Mensagem" })
+                            <div class="ui blue basic label" id="mensagem">
+                                <span class="validaTM"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <div class="ui checkbox">
+                                @Html.CheckBoxFor(model => model.av_g)
+                                <label>Aviso geral?</label>
+                            </div>
+                            <div class="ui blue basic label" id="status">
+                                <span class="validaAG"></span>
+                            </div>
+                        </div>
+                        <div class="ui left icon input">
+                            <div class="ui checkbox">
+                                @Html.CheckBoxFor(model => model.av_d)
+                                <label>Aviso para disciplina?</label>
+                            </div>
+                            <div class="ui blue basic label" id="statusD">
+                                <span class="validaAD"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="ui left icon input">
+                            @Html.Action("SubjectDropDownList")
+                            <div class="ui blue basic label" id="disciplinas">
+                                <span class="validaTDD"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            @Html.Action("ClassDropDownList")
+                            <div class="ui blue basic label" id="turma">
+                                <span class="validaTTU"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <a id="btnSave" class="ui positive ok right labeled icon button">
+                            Salvar
+                            <i class="save icon"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

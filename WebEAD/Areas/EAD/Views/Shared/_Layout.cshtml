@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/eadcss")
+    @Styles.Render("~/Content/toastr")
+    @RenderSection("head", required: false)
+    @Scripts.Render("~/bundles/modernizr")
+    <title>@ViewBag.Title - Web EAD</title>
+
+</head>
+<body class="principal">
+    @Scripts.Render("~/bundles/semanticjs")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/toastr")
+
+    <div class="ui grid">
+        <div class="sixteen wide column">
+            @RenderBody()
+        </div>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

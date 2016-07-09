@@ -1,0 +1,9 @@
+﻿@model IEnumerable<WebEAD.Areas.Extranet.Models.ModuleMetadado>
+
+<select class="ui dropdown" id="econt_mod_id" name="econt_mod_id" onchange="getvalM(this);">
+    <option value="">Modulos</option>
+    @foreach (var item in Model)
+    {
+        <option value="@item.mod_id">@item.mod_descricao</option>
+    }
+</select>

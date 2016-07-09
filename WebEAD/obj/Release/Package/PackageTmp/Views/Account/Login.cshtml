@@ -1,0 +1,60 @@
+﻿@model WebEAD.Models.LoginMetadado
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    ViewBag.Title = "Login";
+}
+
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <h2 class="ui teal image header">
+            <div class="content">
+                Acesso ao Sistema - Web EAD
+            </div>
+        </h2>
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "ui large fluid form" }))
+        {
+            @Html.AntiForgeryToken() // previne o ataque CSRF
+                                    @Html.ValidationSummary(true)
+                                    <div class="ui stacked segment">
+                                        <div class="field">
+                                            <div class="ui left icon input">
+                                                <i class="user icon"></i>
+                                                @Html.TextBoxFor(a => a.eus_login, new { placeholder = "Nome de Usuário" })
+                                                <div class="ui teal basic label">
+                                                    @Html.ValidationMessageFor(a => a.eus_login)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="ui left icon input">
+                                                <i class="lock icon"></i>
+                                                @Html.PasswordFor(a => a.eus_senha, new { placeholder = "Senha" })
+                                                <div class="ui teal basic label">
+                                                    @Html.ValidationMessageFor(a => a.eus_senha)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="submit" class="ui fluid large teal submit button" value="Entrar" />
+                                    </div>
+        }
+        <div class="ui message">
+            <a href="@Url.Action("ForgotPassword","Account")">Esqueceu a Senha?</a>
+        </div>
+    </div>
+</div>
+
+@*<script type="text/javascript">
+        $(function () {
+
+            var systemMessage = @Html.Raw(TempData[WebEAD.Controllers.MasterController.SystemMessage]);
+
+            showMessage(systemMessage);
+        });
+
+
+        function showMessage(message) {
+            toastr[message.type](message.content, message.title);
+        }
+    </script>*@
+
+

@@ -1,0 +1,212 @@
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\obj\Debug\WebEAD.csprojResolveAssemblyReference.cache
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\csc.exe
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\csc.exe.config
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\csc.rsp
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\csi.exe
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\csi.rsp
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\System.AppContext.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\System.Collections.Immutable.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\System.Diagnostics.StackTrace.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\System.IO.FileSystem.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\System.IO.FileSystem.Primitives.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\System.Reflection.Metadata.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\vbc.exe
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\vbc.exe.config
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\vbc.rsp
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\VBCSCompiler.exe
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\roslyn\VBCSCompiler.exe.config
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\WebEAD.dll.config
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\WebEAD.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\WebEAD.pdb
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Antlr3.Runtime.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\AspNet.Identity.MySQL.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Dapper.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\EntityFramework.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\EntityFramework.SqlServer.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\FluentAssertions.Core.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\FluentAssertions.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Hangfire.Core.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Hangfire.MySql.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Hangfire.SqlServer.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\itextsharp.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\itextsharp.xmlworker.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\linq2db.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.AspNet.Identity.Core.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.AspNet.Identity.Owin.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.Host.SystemWeb.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.Security.Cookies.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.Security.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.Security.Facebook.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.Security.Google.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.Security.OAuth.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.Security.Twitter.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Web.Infrastructure.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\MySql.Data.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Owin.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Rotativa.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\System.Web.Helpers.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\System.Web.Mvc.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\System.Web.Optimization.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\System.Web.Razor.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\System.Web.WebPages.Deployment.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\System.Web.WebPages.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\System.Web.WebPages.Razor.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\WebGrease.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\AspNet.Identity.MySQL.pdb
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Antlr3.Runtime.pdb
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Dapper.pdb
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Dapper.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\FluentAssertions.pdb
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\FluentAssertions.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\FluentAssertions.Core.pdb
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\FluentAssertions.Core.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Hangfire.Core.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Hangfire.SqlServer.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\itextsharp.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\linq2db.pdb
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\System.Web.Helpers.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\System.Web.Mvc.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\System.Web.Optimization.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\System.Web.Razor.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\System.Web.WebPages.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\System.Web.WebPages.Deployment.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\System.Web.WebPages.Razor.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\EntityFramework.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\EntityFramework.SqlServer.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.AspNet.Identity.Core.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.AspNet.Identity.Owin.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.Host.SystemWeb.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.Security.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.Security.Facebook.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.Security.Cookies.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.Security.OAuth.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.Security.Google.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.Security.Twitter.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\obj\Debug\WebEAD.dll
+c:\Users\Deivid\Documents\Visual Studio 2015\Projects\WebEAD\WebEAD\obj\Debug\WebEAD.pdb
+C:\Users\Deivid\documents\visual studio 2015\Projects\WebEAD\WebEAD\bin\Hangfire.Dashboard.Authorization.dll
+C:\Users\Deivid\documents\visual studio 2015\Projects\WebEAD\WebEAD\bin\Hangfire.Dashboard.Authorization.xml
+C:\Users\Deivid\documents\visual studio 2015\Projects\WebEAD\WebEAD\bin\Newtonsoft.Json.dll
+C:\Users\Deivid\documents\visual studio 2015\Projects\WebEAD\WebEAD\bin\Newtonsoft.Json.xml
+F:\Projetos\WebEAD\WebEAD\obj\Debug\WebEAD.csprojResolveAssemblyReference.cache
+F:\Projetos\WebEAD\WebEAD\obj\Debug\WebEAD.dll
+F:\Projetos\WebEAD\WebEAD\obj\Debug\WebEAD.pdb
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\csc.exe
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\csc.exe.config
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\csc.rsp
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\csi.exe
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\csi.rsp
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\System.AppContext.dll
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\System.Collections.Immutable.dll
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\System.Diagnostics.StackTrace.dll
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\System.IO.FileSystem.dll
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\System.IO.FileSystem.Primitives.dll
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\System.Reflection.Metadata.dll
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\vbc.exe
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\vbc.exe.config
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\vbc.rsp
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\VBCSCompiler.exe
+F:\Projetos\WebEAD\WebEAD\bin\roslyn\VBCSCompiler.exe.config
+F:\Projetos\WebEAD\WebEAD\bin\WebEAD.dll.config
+F:\Projetos\WebEAD\WebEAD\bin\WebEAD.dll
+F:\Projetos\WebEAD\WebEAD\bin\WebEAD.pdb
+F:\Projetos\WebEAD\WebEAD\bin\Antlr3.Runtime.dll
+F:\Projetos\WebEAD\WebEAD\bin\AspNet.Identity.MySQL.dll
+F:\Projetos\WebEAD\WebEAD\bin\Dapper.dll
+F:\Projetos\WebEAD\WebEAD\bin\EntityFramework.dll
+F:\Projetos\WebEAD\WebEAD\bin\EntityFramework.SqlServer.dll
+F:\Projetos\WebEAD\WebEAD\bin\FluentAssertions.Core.dll
+F:\Projetos\WebEAD\WebEAD\bin\FluentAssertions.dll
+F:\Projetos\WebEAD\WebEAD\bin\Hangfire.Core.dll
+F:\Projetos\WebEAD\WebEAD\bin\Hangfire.Dashboard.Authorization.dll
+F:\Projetos\WebEAD\WebEAD\bin\Hangfire.MySql.dll
+F:\Projetos\WebEAD\WebEAD\bin\Hangfire.SqlServer.dll
+F:\Projetos\WebEAD\WebEAD\bin\itextsharp.dll
+F:\Projetos\WebEAD\WebEAD\bin\itextsharp.xmlworker.dll
+F:\Projetos\WebEAD\WebEAD\bin\linq2db.dll
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.AspNet.Identity.Core.dll
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.dll
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.Security.Cookies.dll
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.Security.dll
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.Security.Facebook.dll
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.Security.Google.dll
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.Security.OAuth.dll
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.Security.Twitter.dll
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Web.Infrastructure.dll
+F:\Projetos\WebEAD\WebEAD\bin\MySql.Data.dll
+F:\Projetos\WebEAD\WebEAD\bin\Newtonsoft.Json.dll
+F:\Projetos\WebEAD\WebEAD\bin\Owin.dll
+F:\Projetos\WebEAD\WebEAD\bin\Rotativa.dll
+F:\Projetos\WebEAD\WebEAD\bin\System.Web.Helpers.dll
+F:\Projetos\WebEAD\WebEAD\bin\System.Web.Mvc.dll
+F:\Projetos\WebEAD\WebEAD\bin\System.Web.Optimization.dll
+F:\Projetos\WebEAD\WebEAD\bin\System.Web.Razor.dll
+F:\Projetos\WebEAD\WebEAD\bin\System.Web.WebPages.Deployment.dll
+F:\Projetos\WebEAD\WebEAD\bin\System.Web.WebPages.dll
+F:\Projetos\WebEAD\WebEAD\bin\System.Web.WebPages.Razor.dll
+F:\Projetos\WebEAD\WebEAD\bin\WebGrease.dll
+F:\Projetos\WebEAD\WebEAD\bin\AspNet.Identity.MySQL.pdb
+F:\Projetos\WebEAD\WebEAD\bin\Antlr3.Runtime.pdb
+F:\Projetos\WebEAD\WebEAD\bin\Dapper.pdb
+F:\Projetos\WebEAD\WebEAD\bin\Dapper.xml
+F:\Projetos\WebEAD\WebEAD\bin\FluentAssertions.pdb
+F:\Projetos\WebEAD\WebEAD\bin\FluentAssertions.xml
+F:\Projetos\WebEAD\WebEAD\bin\FluentAssertions.Core.pdb
+F:\Projetos\WebEAD\WebEAD\bin\FluentAssertions.Core.xml
+F:\Projetos\WebEAD\WebEAD\bin\Hangfire.Core.xml
+F:\Projetos\WebEAD\WebEAD\bin\Hangfire.Dashboard.Authorization.xml
+F:\Projetos\WebEAD\WebEAD\bin\Hangfire.SqlServer.xml
+F:\Projetos\WebEAD\WebEAD\bin\itextsharp.xml
+F:\Projetos\WebEAD\WebEAD\bin\linq2db.pdb
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Projetos\WebEAD\WebEAD\bin\Newtonsoft.Json.xml
+F:\Projetos\WebEAD\WebEAD\bin\System.Web.Helpers.xml
+F:\Projetos\WebEAD\WebEAD\bin\System.Web.Mvc.xml
+F:\Projetos\WebEAD\WebEAD\bin\System.Web.Optimization.xml
+F:\Projetos\WebEAD\WebEAD\bin\System.Web.Razor.xml
+F:\Projetos\WebEAD\WebEAD\bin\System.Web.WebPages.xml
+F:\Projetos\WebEAD\WebEAD\bin\System.Web.WebPages.Deployment.xml
+F:\Projetos\WebEAD\WebEAD\bin\System.Web.WebPages.Razor.xml
+F:\Projetos\WebEAD\WebEAD\bin\EntityFramework.xml
+F:\Projetos\WebEAD\WebEAD\bin\EntityFramework.SqlServer.xml
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.AspNet.Identity.Core.xml
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.xml
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.Security.xml
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.Security.Facebook.xml
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.Security.Cookies.xml
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.Security.OAuth.xml
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.Security.Google.xml
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.Security.Twitter.xml
+F:\Projetos\WebEAD\WebEAD\bin\Microsoft.Owin.Security.MicrosoftAccount.xml

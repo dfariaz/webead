@@ -1,0 +1,22 @@
+﻿@model IEnumerable<WebEAD.Areas.EAD.Models.NoticeMetadado>
+
+@foreach (var item in Model)
+{
+    <div class="ui grid">
+        <div class="sixteen wide blue column">
+            <h3>@Html.DisplayFor(modelItem => item.av_titulo)</h3>
+        </div>
+    </div>
+    <div class="ui grid">
+        <div class="sixteen wide column mensagem">
+            <p>@Html.DisplayTextFor(modelItem => item.av_mensagem)</p>
+        </div>
+    </div>
+    <div class="ui grid">
+        <div class="sixteen wide column">
+            <h5>Publicado em: @Html.DisplayFor(modelItem => item.av_datacadastro)</h5>
+        </div>
+    </div>
+    @Html.HiddenFor(modelItem => item.av_geral)
+    <hr class="ihr3" />
+}

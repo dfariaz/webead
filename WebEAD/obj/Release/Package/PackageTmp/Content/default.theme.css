@@ -1,0 +1,340 @@
+﻿/*comman document viewer*/
+.git-docviewer-container {
+    background-color: #404040;
+}
+
+.git-docviewer-toolbar {
+    height: 37px;
+    background-image: url('Images/texture.png'), linear-gradient(rgba(81, 81, 81, 0.99), rgba(68, 68, 68, 0.95));
+    box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.08) inset, 0px 1px 1px rgba(0, 0, 0, 0.15) inset, 0px -1px 0px rgba(255, 255, 255, 0.05) inset, 0px 1px 0px rgba(0, 0, 0, 0.15), 0px 1px 1px rgba(0, 0, 0, 0.1);
+    /*background-color: #474747;*/
+}
+
+.git-docviewer-page {
+    /*border-width: 9px;*/
+    /*border-style: solid;*/
+    border-color: transparent;
+    /*border-image: url("Images/shadow.png") 0 0 0 0 repeat repeat;*/
+    background-color: lightgray;
+    background-color: #FFF;
+}
+
+.git-docviewer-quick-find-panel {
+    /*border-width: 9px;*/
+    /*border-style: solid;*/
+    height: 34px;
+    background-image: url('Images/texture.png'), linear-gradient(rgba(81, 81, 81, 0.99), rgba(68, 68, 68, 0.95));
+    box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.08) inset, 0px 1px 1px rgba(0, 0, 0, 0.15) inset, 0px -1px 0px rgba(255, 255, 255, 0.05) inset, 0px 1px 0px rgba(0, 0, 0, 0.15), 0px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.git-docviewer-page-drag {
+    cursor: default
+    /*cursor: url(Images/hand.png), url(Images/favicon.cur), pointer;
+    cursor: move;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: url(Images/hand.png) 8 8, move;*/
+}
+
+.git-docviewer-page-dragging {
+    cursor:default
+    /*cursor: url(Images/dragginghand.png), url(Images/dragginghand.cur), pointer;
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+    cursor: url(Images/dragginghand.png) 8 8, move;*/
+}
+
+.git-docviewer-page > canvas {
+}
+
+.git-docviewer-controlcontainer {
+    /*background-color: #474747;*/
+    width: 28px;
+    height: 27px;
+}
+
+.git-docviewer-dual-controlcontainer {
+    width: 41px;
+    height: 27px;
+}
+
+.git-docviewer-controlcontainer:hover {
+    background-color: hsla(0,0%,0%,.12);
+}
+
+/*file operation controls*/
+.git-docviewer-open {
+    background-image: url("Images/open.png");
+}
+
+.git-docviewer-download {
+    background-image: url("Images/download.png");
+}
+
+.git-docviewer-invert {
+    background-image: url("Images/invert.png");
+}
+.git-docviewer-forms-comboBoxDownArrow {
+    background-image: url("Images/downArrow.png");
+    background-repeat: no-repeat;    
+    background-size: 100%;
+
+}
+
+.activeToolbarButton {
+    background-clip: padding-box;
+    border: 1px solid hsla(0,0%,0%,.35);
+    border-color: hsla(0,0%,0%,.32) hsla(0,0%,0%,.38) hsla(0,0%,0%,.42);
+    box-shadow: 0 1px 0 hsla(0,0%,100%,.05) inset, 0 0 1px hsla(0,0%,100%,.15) inset, 0 1px 0 hsla(0,0%,100%,.05);
+    -webkit-transition-property: background-color, border-color, box-shadow;
+    -webkit-transition-duration: 150ms;
+    -webkit-transition-timing-function: ease;
+    transition-property: background-color, border-color, box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color:rgb(92, 92, 92);
+}
+
+.git-docviewer-sec-download {
+    width: 23px;
+    height: 20px;
+    margin: 3px 4px 0px 2px;
+    float: left;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.git-docviewer-downloadas {
+    background-image: url("Images/downloadAs.png");
+}
+
+.git-docviewer-print {
+    background-image: url("Images/print.png");
+}
+
+.git-docviewer-save{
+      background-image: url("Images/save.png");
+
+}
+
+.git-docviewer-findup {
+    background-image: url("Images/arrow-up.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.git-docviewer-findControls:hover {
+    background-clip: padding-box;
+    border: 1px solid hsla(0,0%,0%,.35);
+    border-color: hsla(0,0%,0%,.32) hsla(0,0%,0%,.38) hsla(0,0%,0%,.42);
+    box-shadow: 0 1px 0 hsla(0,0%,100%,.05) inset, 0 0 1px hsla(0,0%,100%,.15) inset, 0 1px 0 hsla(0,0%,100%,.05);
+    -webkit-transition-property: background-color, border-color, box-shadow;
+    -webkit-transition-duration: 150ms;
+    -webkit-transition-timing-function: ease;
+    transition-property: background-color, border-color, box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: hsla(0,0%,0%,.12);
+}
+
+.git-docviewer-OKBtn:hover {
+    background-clip: padding-box;
+    border: 1px solid hsla(0,0%,0%,.35);
+    border-color: hsla(0,0%,0%,.32) hsla(0,0%,0%,.38) hsla(0,0%,0%,.42);
+    box-shadow: 0 1px 0 hsla(0,0%,100%,.05) inset, 0 0 1px hsla(0,0%,100%,.15) inset, 0 1px 0 hsla(0,0%,100%,.05);
+    -webkit-transition-property: background-color, border-color, box-shadow;
+    -webkit-transition-duration: 150ms;
+    -webkit-transition-timing-function: ease;
+    transition-property: background-color, border-color, box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color:rgb(92, 92, 92);
+}
+
+.git-docviewer-finddown {
+    background-image: url("Images/arrow-down.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+.git-docviewer-findclose {
+    background-image: url("Images/close.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.git-docviewer-quick-find-bubble {
+    background-image: url("Images/bubble-up-gray.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/*navigation controls*/
+.git-docviewer-first {
+    background-image: url("Images/first.png");
+}
+
+.git-docviewer-prev {
+    background-image: url("Images/prev.png");
+}
+
+.git-docviewer-goto {
+    background-color: rgba(255, 255, 255, 0.09);
+    width: 45px;
+    color: #F2F2F2;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.git-docviewer-next {
+    background-image: url("Images/next.png");
+}
+
+.git-docviewer-last {
+    background-image: url("Images/last.png");
+}
+
+/*zoom controls*/
+
+.git-docviewer-zoomin {
+    background-image: url("Images/zoomin.png");
+}
+
+.git-docviewer-zoomout {
+    background-image: url("Images/zoomout.png");
+}
+
+
+/*rotation control*/
+
+.git-docviewer-rotateright {
+    background-image: url("Images/clockwise.png");
+}
+
+.git-docviewer-rotateleft {
+    background-image: url("Images/anticlock.png");
+}
+
+.git-docviewer-fullScreen {
+    background-image: url("Images/fullscreen.png");
+}
+
+.git-docviewer-quickFind {
+    background-image: url("Images/find.png");
+}
+
+
+.git-docviewer-quickFind_clicked {
+    background-clip: padding-box;
+    border: 1px solid hsla(0,0%,0%,.35);
+    border-color: hsla(0,0%,0%,.32) hsla(0,0%,0%,.38) hsla(0,0%,0%,.42);
+    box-shadow: 0 1px 0 hsla(0,0%,100%,.05) inset, 0 0 1px hsla(0,0%,100%,.15) inset, 0 1px 0 hsla(0,0%,100%,.05);
+    -webkit-transition-property: background-color, border-color, box-shadow;
+    -webkit-transition-duration: 150ms;
+    -webkit-transition-timing-function: ease;
+    transition-property: background-color, border-color, box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    background-color: hsla(0,0%,0%,.12);
+}
+
+.git-docviewer-fullScreen-exit {
+    background-image: url("Images/fullscreen-exit.png");
+}
+
+.git-docviewer-downloadAs-carat {
+    /*    background-image: url("Images/small-grey-disclosure-arrow-down.png");
+    background-repeat:no-repeat;
+    background-position: center; */
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    border-top: 5px solid;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    color: white;
+}
+
+.git-docviewer-sec-zoomout {
+    display: block;
+}
+
+.git-docviewer-sec-zoomin {
+    display: block;
+}
+
+.git-docviewer-sec-print {
+    display: block;
+}
+
+.git-docviewer-sec-download {
+    display: block;
+}
+
+.git-docviewer-zoom {
+    background-image: url("Images/zoom.png");
+}
+
+    .git-docviewer-zoom:focus {
+        background-color: rgba(0, 0, 0, 0.12);
+    }
+
+.git-docviewer-togglemenu {
+    background: url("Images/togglemenu.png") no-repeat center;
+}
+
+.git-docviewer-loading {
+    background: url('Images/loadDocument.gif') no-repeat center;
+    padding: 10px;
+}
+
+.git-docviewer-printdialog {
+    background: url('Images/loadDocument.gif') no-repeat center;
+    padding: 10px;
+}
+
+.git-docviewer-scrollablecanvas {
+    padding-top: 38px;
+    background-color: #424242;
+}
+
+
+.git-docviewer-open {
+    background-image: url("Images/open.png");
+}
+
+.git-docviewer-download {
+    background-image: url("Images/download.png");
+}
+
+.git-docviewer-download {
+    width: 23px;
+    height: 27px;
+    margin: 0px 4px 0px 2px;
+    float: left;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.git-docviewer-downloadas {
+    background-image: url("Images/downloadAs.png");
+}
+
+.git-docviewer-print {
+    background-image: url("Images/print.png");
+}
+

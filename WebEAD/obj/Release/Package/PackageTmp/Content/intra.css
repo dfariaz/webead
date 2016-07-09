@@ -1,0 +1,126 @@
+﻿/*
+    Cor azul menus: #2185d0
+
+*/
+
+html{
+	margin: 0;
+	padding: 0;
+    position: relative;
+    min-height: 100%;
+}
+
+body{
+    height:100%;
+}
+
+.linha{
+     padding-top: 2.52em;
+
+}
+
+.borda{
+    border: 0.189em solid #2185d0/*00b5ad*/;
+    border-radius: 0.30em;
+}
+
+.firstmenu{
+    margin-top: 4em;
+}
+
+.secondmenu{
+    margin-top: 4em;
+}
+
+.hicerter{
+    text-align:center;
+}
+
+.bvalign{
+    padding-top: 0.5em;
+}
+
+.foot tfoot{
+    background-color: #2185d0;
+}
+
+.foot tfoot a{
+    padding: 0.8em;
+    text-align: center;
+    color: white;
+}
+
+.foot tfoot td {
+    color: white;
+}
+
+.foot tfoot a:hover{
+    background-color: #34a0f1;
+    color: white;
+}
+
+.foot{
+    border: 1px solid #2185d0;
+}
+
+.headRow a{
+    color: white;
+}
+
+.bodyRow{
+    background-color: white;
+    color: #2185d0;
+}
+
+.opcoes{
+    width: 250px;
+}
+
+.specialIDP h1{
+    margin-left: 1em;
+}
+
+.specialIDP h3{
+    margin-left: 1em;
+}
+
+.specialIDP h5{
+    margin-left: 2em;
+}
+
+.bordaEDIT{
+    border-bottom: 0.189em solid #2185d0;
+    border-right: 0.189em solid #2185d0;
+    border-bottom-right-radius: 0.63em;
+}
+
+.gridf2{
+    margin-top: 0.189em;
+}
+
+.gridf3{
+    margin-bottom: 0.378em;
+}
+
+.gridf{
+    height: 40.95em;
+    overflow: auto;
+}
+
+.ui.action.input input[type="file"] {
+    display: none;
+}
+
+.filtroArquivo{
+    height: 500px;
+    border: 1px solid #2185d0;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.arquivos{
+    height: 500px;
+    overflow: auto;
+}
+
+.pdfobject-container { height: 500px;}

@@ -1,0 +1,191 @@
+﻿@model WebEAD.Areas.Extranet.Models.ContentMetadado
+
+@{
+    ViewBag.Title = "Novo Conteúdo";
+    <script type="text/javascript">
+        var selecionadoD = "", selecionadoM = "";
+        $(function () {
+            $('#econt_datapublicacao').daterangepicker({
+                locale: {
+                    format: 'DD/MM/YYYY',
+                    "daysOfWeek": ["D", "S", "T", "Q", "Q", "S", "S"],
+                    "monthNames": ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+                    "firstDay": 7
+                },
+                singleDatePicker: true,
+                showDropdowns: true
+            });
+            $('#econt_datafinalizacao').daterangepicker({
+                locale: {
+                    format: 'DD/MM/YYYY',
+                    "daysOfWeek": ["D", "S", "T", "Q", "Q", "S", "S"],
+                    "monthNames": ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+                    "firstDay": 7
+                },
+                singleDatePicker: true,
+                showDropdowns: true
+            });
+
+            $('#btnSave').click(function () {
+                if (validaCampos()) {
+                    var titulo = $('#econt_titulo').val();
+                    var disciplina = selecionadoD;
+                    var modulo = selecionadoM;
+                    var datapub = $('#econt_datapublicacao').val();
+                    var datafin = $('#econt_datafinalizacao').val();
+                    var descricao = CKEDITOR.instances.econt_descricao.getData();
+                    var Dados = {
+                        econt_descricao: descricao,
+                        econt_titulo: titulo,
+                        econt_datapublicacao: datapub,
+                        econt_datafinalizacao: datafin,
+                        econt_dp_id: disciplina,
+                        econt_mod_id: modulo
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("CreateDidacticContent", "Content")",
+                        data: JSON.stringify(Dados),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data.msg == "Salvo") {
+                                toastr.success("Conteúdo salvo com sucesso!", "Mensagem do Sistema");
+                                window.setTimeout('window.location.href = "@Url.Action("Didactic", "Content")"', 3000);
+                            }
+                            else {
+                                toastr.error("Conteúdo não salvo. Entre em contato com o suporte", "Mensagem do Sistema");
+                                window.setTimeout('window.location.href = "@Url.Action("Didactic", "Content")"', 3000);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+        function validaCampos() {
+            $('.validaTitulo').text("");
+            $('.validaDisciplina').text("");
+            $('.validaModulo').text("");
+            $('.validaDataPublicacao').text("");
+            $('.validaDataFinalizacao').text("");
+            $('.validaDescricao').text("");
+            var conta = 0;
+            var titulo = $('#econt_titulo').val();
+            var disciplina = selecionadoD;
+            var modulo = selecionadoM;
+            var datapub = $('#econt_datapublicacao').val();
+            var datafin = $('#econt_datafinalizacao').val();
+            var descricao = CKEDITOR.instances.econt_descricao.getData();
+            if (descricao != "") { conta = 1; $('.validaDescricao').text(""); } else { $('.validaDescricao').text("Informe a Descrição"); }
+            if (titulo != "") { conta += 1; $('.validaTitulo').text(""); } else { $('.validaTitulo').text("Informe o Titulo"); }
+            if (disciplina != "") { conta += 1; $('.validaDisciplina').text(""); } else { $('.validaDisciplina').text("Informe a Disciplina"); }
+            if (modulo != "") { conta += 1; $('.validaModulo').text(""); } else { $('.validaModulo').text("Informe o Modulo"); }
+            if (datapub != "") { conta += 1; $('.validaDataPublicacao').text(""); } else { $('.validaDataPublicacao').text("Informe a Data de Publicação"); }
+            if (datafin != "") { conta += 1; $('.validaDataFinalizacao').text(""); } else { $('.validaDataFinalizacao').text("Informe a Data de Finalização"); }
+            if (conta == 6) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        };
+    </script>
+}
+
+<div class="ui grid specialIDP">
+    <div class="sixteen wide blue text column centered">
+        <h1 class="">Novo Conteúdo | Material Didático</h1>
+    </div>
+</div>
+
+<div class="ui grid">
+    <div class="fourteen wide column centered">
+        <form id="formT" name="formT" method="post" class="ui fluid form">
+            <div class="ui grid">
+                <div class="seven wide column">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            @Html.TextBoxFor(model => model.econt_titulo, new { placeholder = "Titulo" })
+                            <i class="font icon"></i>
+                            <div class="ui blue basic label" id="titulo">
+                                <span class="validaTitulo"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            @Html.Action("SubjectDropDownList", "Content")
+                            <div class="ui blue basic label" id="disciplinas">
+                                <span class="validaDisciplina"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            @Html.Action("ModuleDropDownList", "Content")
+                            <div class="ui blue basic label" id="disciplinas">
+                                <span class="validaModulo"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="one wide column">
+                </div>
+                <div class="seven wide column">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <input type="text" name="econt_datapublicacao" id="econt_datapublicacao" value="" placeholder="Data Publicação" />
+                            <i class="calendar icon"></i>
+                            <div class="ui blue basic label" id="datapublicacao">
+                                <span class="validaDataPublicacao"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <input type="text" name="econt_datafinalizacao" id="econt_datafinalizacao" value="" placeholder="Data Finalização" />
+                            <i class="calendar icon"></i>
+                            <div class="ui blue basic label" id="datafinalizacao">
+                                <span class="validaDataFinalizacao"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <a id="voltar" class="ui black deny left labeled icon button" href="@Url.Action("Didactic", "Content")">
+                            Voltar
+                            <i class="backward icon"></i>
+                        </a>
+                        <a id="btnSave" class="ui positive ok right labeled icon button">
+                            Salvar
+                            <i class="save icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui blue basic label" id="descricao">
+                    <span class="validaDescricao"></span>
+                </div>
+                <div class="ui left icon input">
+                    <textarea class="ckeditor" id="econt_descricao" name="econt_descricao" placeholder="Descrição"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="ui grid">
+
+</div>
+<script type="text/javascript">
+    function getvalD(sel) {
+        selecionadoD = sel.value;
+    };
+
+    function getvalM(sel) {
+        selecionadoM = sel.value;
+    };
+
+    function showMessage(message) {
+        toastr[message.type](message.content, message.title);
+    };
+</script>

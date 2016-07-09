@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebEAD.Areas.Extranet.Models.PostsMetadado>
+
+@{
+    Layout = null;
+}
+
+<div class="ui grid">
+    <div class="sixteen wide column borda gridf3">
+        <div class="ui grid">
+            <div class="ten wide blue column">
+                @if (Model.Count() == 0)
+                {
+                    <p>Não existem postagens.</p>
+                }
+                @foreach (var item in Model)
+                {
+                    <p>Postagem Fixa | Postado Em: @item.fptg_datapublicacao.ToShortDateString() pelo Professor: @item.NomeProfessor</p>
+                    break;
+                }
+            </div>
+            <div class="six wide blue column">
+                @if (ViewBag.validacao == "1")
+                {
+                    <a href="@Url.Action("EditPost","Forum", new { id = ViewBag.id })" class="ui small teal button">Editar Postagem Fixa</a>
+                        }
+                    else
+                    {
+                    <a href="@Url.Action("CreatePost", "Forum", new { id = ViewBag.id })" class="ui small teal button">Criar Postagem Fixa</a>
+                        }
+                @*<a class="ui small teal icon button" href="@Url.Action("ExportPDF","Forum", new { id = @ViewBag.ID })" target="_blank">
+        <i class="file pdf outline icon"></i>
+        Exportar PDF
+    </a>*@
+            </div>
+        </div>
+        <div class="ui grid">
+            <div class="sixteen wide column">
+                @foreach (var item2 in Model)
+                {
+                    if (item2.linkarquivo != null)
+                    {
+                        <a href="@item2.linkarquivo">@item2.nomearquivo</a>
+                    }
+                    @Html.Raw(item2.fptg_mensagem)
+                }
+            </div>
+        </div>
+    </div>
+</div>

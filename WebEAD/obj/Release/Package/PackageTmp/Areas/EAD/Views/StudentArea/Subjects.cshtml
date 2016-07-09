@@ -1,0 +1,10 @@
+﻿@model IEnumerable<WebEAD.Areas.EAD.Models.SubjectsMetadado>
+
+@foreach (var item in Model)
+{
+    <div class="ui grid">
+        <div class="sixteen wide column pdisciplinas">
+            <a href="~/EAD/Courses/Index/@item.dp_id" class="item disclink">► @item.dp_descricao</a>
+        </div>
+    </div>
+}

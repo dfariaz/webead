@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebEAD.Areas.EAD.Models.ForumMetadado>
+
+@{
+    ViewBag.Title = "Forum";
+    Layout = "~/Areas/EAD/Views/Shared/_LayoutDisciplinas.cshtml";
+}
+
+<div class="ui grid">
+    <div class="sixteen wide blue text column centered">
+        <h1>Forum de Discussão</h1>
+    </div>
+</div>
+
+<div class="ui grid ">
+    <div class="fifteen wide column gridf1 centered">
+        <div class="ui grid">
+            <div class="thirteen wide column borda fgrid">
+                <h4>Tópicos</h4>
+            </div>
+            <div class="three wide column borda">
+                <h4>Mensagens (Quantidade)</h4>
+            </div>
+        </div>
+    </div>
+</div>
+@foreach (var item in Model)
+{
+    <div class="ui grid ">
+        <div class="fifteen wide column gridf2 centered">
+            <div class="ui grid">
+                <div class="thirteen wide column borda fgrid">
+                    @Html.ActionLink(item.topicos, "TopicMessages", "Courses", new { idT = item.id, idD = ViewBag.IDDisciplina }, null)
+                </div>
+                <div class="three wide column borda">
+                    <h4>@item.qtdMensagens</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(function()
+    {
+        $('<a>', {
+            class: 'item dalink',
+            href: '@Url.Action("Index", "Content", new { id = ViewBag.IDDisciplina })',
+            text: 'Material Didático'
+        }).appendTo('.firstmenu:first');
+
+        $('<a>', {
+            class: 'item dalink',
+            href: '@Url.Action("Index", "Courses", new { id = ViewBag.IDDisciplina })',
+            text: 'Avisos'
+              }).appendTo('.firstmenu:last');
+
+        $('<a>', {
+            class: 'item dalink',
+            href: '@Url.Action("Forum", "Courses", new { id = ViewBag.IDDisciplina })',
+            text: 'Forum de Discussão'
+        }).appendTo('.firstmenu:last');
+    });
+</script>

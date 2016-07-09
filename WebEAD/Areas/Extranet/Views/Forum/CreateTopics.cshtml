@@ -1,0 +1,46 @@
+﻿@model WebEAD.Areas.Extranet.Models.ForumMetadado
+
+@{
+    Layout = null;
+}
+<i class="close icon"></i>
+<div class="header">
+    Novo Tópico
+</div>
+<div class="content">
+    <form id="formT" name="formT" method="post" class="ui fluid form">
+        <div class="field">
+            <div class="ui left icon input">
+                @Html.TextAreaFor(model => model.ftpc_descricao, new { placeholder = "Descrição" })
+                <div class="ui blue basic label" id="descricao">
+                    <span class="validaTD"></span>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui left icon input">
+                <div class="ui checkbox">
+                    <input type="checkbox" name="ftpc_st_id" id="ftpc_st_id">
+                    <label>Ativo?</label>
+                </div>
+                <div class="ui blue basic label" id="status">
+                    <span class="validaTS"></span>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui left icon input">
+                @Html.Action("SubjectDropdownList", "Forum")
+                <div class="ui blue basic label" id="disciplinas">
+                    <span class="validaTDD"></span>
+                </div>
+            </div>
+        </div>
+        <div class="actions">
+            <a id="btnSave" class="ui positive ok right labeled icon button">
+                Salvar
+                <i class="save icon"></i>
+            </a>
+        </div>
+    </form>
+</div>

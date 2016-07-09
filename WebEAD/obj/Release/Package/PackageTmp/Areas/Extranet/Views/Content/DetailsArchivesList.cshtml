@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebEAD.Areas.Extranet.Models.ArchivesMetadado>
+
+
+@{
+    Layout = null;
+    WebGrid grid = new WebGrid(Model, canPage: true, rowsPerPage: 6);
+}
+
+@grid.GetHtml(
+    tableStyle: "ui celled inverted blue table foot",
+    footerStyle: "footRow",
+    headerStyle: "headRow",
+    rowStyle: "bodyRow",
+    alternatingRowStyle: "bodyRow",
+    fillEmptyRows: false,
+    mode: WebGridPagerModes.All,
+    firstText: "Primeiro",
+    previousText: "Anterior",
+    nextText: "Próximo",
+    lastText: "Último",
+    columns: grid.Columns(
+        grid.Column("earq_id", header: "ID", format: @<a>@item.earq_id</a>),
+        grid.Column("earq_nome", header: "Titulo", format: @<p>@item.earq_nome</p>),
+        grid.Column("disciplina", header: "Disciplina", format: @<p>@item.disciplina</p>),
+        grid.Column("modulo", header: "Modulo", format: @<p>@item.modulo</p>),
+        grid.Column("earq_datacadastro", header: "Data Cadastro", format: (item) => string.Format("{0:dd/MM/yyyy}", item.earq_datacadastro)),
+        grid.Column("Opções", format: @<text>
+            <a class="ui small blue icon button" id="delArquivo" data-id="@item.earq_id" data-name="@item.earq_nome">
+                <i class="delete icon"></i>
+                Excluir
+            </a>
+        </text>, style: "", canSort: false))
+)

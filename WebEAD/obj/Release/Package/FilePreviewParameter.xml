@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="dfariaz-001-site1" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Deivid\\documents\\visual\ studio\ 2015\\Projects\\WebEAD\\WebEAD\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Deivid\\documents\\visual\ studio\ 2015\\Projects\\WebEAD\\WebEAD\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="BDConnection-Web.config Connection String" description="" value="Server=MYSQL5013.myASP.NET;Database=db_a0965f_webead;Uid=a0965f_webead;Pwd=motion2016;Allow User Variables=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Deivid\\documents\\visual\ studio\ 2015\\Projects\\WebEAD\\WebEAD\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='BDConnection']/@connectionString" />
+  </parameter>
+</parameters>

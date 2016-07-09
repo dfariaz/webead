@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Topicos";
+    Layout = "~/Areas/EAD/Views/Shared/_LayoutDisciplinas.cshtml";
+
+    <script>
+        $('<a>', {
+            class: 'item dalink',
+            href: '@Url.Action("Index", "Courses", new { id = ViewBag.IDDisciplina })',
+            text: 'Avisos'
+              }).appendTo('.firstmenu:last');
+
+        $('<a>', {
+            class: 'item dalink',
+            href: '@Url.Action("Forum", "Courses", new { id = ViewBag.IDDisciplina })',
+            text: 'Forum de Discussão'
+        }).appendTo('.firstmenu:last');
+    </script>
+}
+
+@Html.Action("MessageFixed", "Courses")
+
+@Html.Action("Messages", "Courses")
+
+
+<div class="ui grid respostaSS" id="respostaSS"><a name="textareaM"></a></div>
+
+<div class="ui grid resp">
+    <div class="sixteen wide column">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="ui grid">
+                <div class="fourteen wide column centered">
+                    <textarea id="fptg_mensagem" name="fptg_mensagem" class="ckeditor"></textarea>
+                    <div class="ui grid">
+                        <div class="twelve wide column"></div>
+                        <div class="four wide column btnMensagem">
+                            <input id="idtopico" name="idtopico" type="hidden" value="@ViewBag.idT" />
+                            <input id="idlogin" name="idlogin" type="hidden" value="@ViewBag.idL" />
+                            <input id="iddisc" name="iddisc" type="hidden" value="@ViewBag.idD" />
+                            <button type="submit" id="botao-entrar" class="ui fluid large blue submit button">Enviar Mensagem</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="rodape"></div>
+
+<script type="text/javascript">
+    $(function () {
+        var systemMessage = @Html.Raw(TempData[WebEAD.Controllers.MasterController.SystemMessage]);
+
+        showMessage(systemMessage);
+    });
+
+    function showMessage(message) {
+        toastr[message.type](message.content, message.title);
+    };
+</script>

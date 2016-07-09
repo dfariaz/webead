@@ -1,0 +1,82 @@
+﻿@model WebEAD.Areas.EAD.Models.ProfileMetadado
+
+@{
+    ViewBag.Title = "Atualização dos Dados";
+    Layout = Layout = "~/Areas/EAD/Views/Shared/_LayoutPerfil.cshtml";
+    <script type="text/javascript">
+        $(function () {
+            $("#telefone").inputmask("mask", { "mask": "(99) 9999-9999" });
+            $("#celular").inputmask("mask", { "mask": "(99) 99999-9999" });
+        });
+    </script>
+}
+
+<div class="ui grid specialDP">
+    <div class="sixteen wide blue text column centered">
+        <h1 class="">Atualização dos Dados Cadastrais</h1>
+    </div>
+</div>
+<div class="ui grid">
+    <div class="five wide column centered">
+        <div class="content">
+            @using (Html.BeginForm("UpdateData", "StudentArea", FormMethod.Post, new { @class = "ui large fluid form" }))
+            {
+                @Html.AntiForgeryToken() // previne o ataque CSRF
+                                        @Html.ValidationSummary(true)
+                                        <input type="hidden" name="p_eus_login" id="p_eus_login" value="@ViewBag.login" />
+                                        <div class="field">
+                                            <div class="ui left icon input">
+                                                <i class="mail icon"></i>
+                                                @Html.EditorFor(model => model.email, new { placeholder = "Email" })
+                                                <div class="ui teal basic label">
+                                                    @Html.ValidationMessageFor(model => model.email)
+                                                </div>
+                                            </div>
+                                        </div>
+                                                <div class="field">
+                                                    <div class="ui left icon input">
+                                                        <i class="phone icon"></i>
+                                                        @Html.EditorFor(model => model.telefone, new { placeholder = "Telefone" })
+                                                        <div class="ui teal basic label">
+                                                            @Html.ValidationMessageFor(model => model.telefone)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="field">
+                                                    <div class="ui left icon input">
+                                                        <i class="phone icon"></i>
+                                                        @Html.EditorFor(model => model.celular, new { placeholder = "Celular" })
+                                                        <div class="ui teal basic label">
+                                                            @Html.ValidationMessageFor(model => model.celular)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input type="submit" class="ui small teal submit button" id="submitF" value="Atualizar" />
+                                                <a id="voltar" class="ui black deny small button" href="@Url.Action("Index","StudentArea")">
+                                                    Voltar
+                                                </a>
+            }
+        </div>
+    </div>
+</div>
+<div class="ui grid">
+    <div class="five wide column centered">
+        <h4>
+            • Mantenha seus dados sempre atualizados!<br />
+            • Todos os avisos sobre o curso serão enviados ao seu email. Sempre insira um email valido.
+        </h4>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+
+        var systemMessage = @Html.Raw(TempData[WebEAD.Controllers.MasterController.SystemMessage]);
+
+        showMessage(systemMessage);
+    });
+
+
+    function showMessage(message) {
+        toastr[message.type](message.content, message.title);
+    }
+</script>

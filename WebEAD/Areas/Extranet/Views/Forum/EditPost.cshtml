@@ -1,0 +1,95 @@
+﻿@model WebEAD.Areas.Extranet.Models.TopicMetadado
+
+
+@{
+    ViewBag.Title = "Nova Postagem Fixa";
+    <script type="text/javascript">
+        var selecionado = "";
+            var valores = '@Html.Raw(ViewBag.descricaoPost)';
+        $(function () {
+            CKEDITOR.instances.fptg_mensagem.setData(valores);
+            $('#btnSave').click(function () {
+                if (validaCampos()) {
+                    var mensagem = CKEDITOR.instances.fptg_mensagem.getData();
+                    var idTopico = $('#idtopico').val();
+                    var idLogin = $('#idlogin').val();
+                    var disciplina = $('#iddisc').val();
+                    var Dados = {
+                        fptg_mensagem: mensagem,
+                        idtopico: idTopico,
+                        idlogin: idLogin,
+                        ftpc_dp_id: disciplina
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("IEditPostagem", "IForum")",
+                        data: JSON.stringify(Dados),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data.msg == "Salvo") {
+                                toastr.success("Postagem atualizada com sucesso!", "Mensagem do Sistema");
+                                window.setTimeout("window.location.href = '@Url.Action("EditTopic", "Forum")?id="+idTopico+"'", 5000);
+                            }
+                            else {
+                                toastr.error("Postagem não atualizada. Entre em contato com o suporte", "Mensagem do Sistema");
+                                window.setTimeout("window.location.href = '@Url.Action("EditTopic", "Forum")?id="+idTopico+"'", 5000);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+        function validaCampos() {
+            $('.CM').text("");
+        var conta = 0;
+        var mensagem = CKEDITOR.instances.fptg_mensagem.getData();
+        if (mensagem != "") { conta = 1; $('.CM').text(""); } else { $('.CM').text("Informe a Mensagem"); }
+        /*if ($('#ftpc_st_id').is(":checked")) { conta += 1; $('.validaTS').text(""); } else { $('.validaTS').text("Informe o Status"); }*/
+        /*if (disciplina != "") { conta += 1; $('.CDD').text(""); } else { $('.CDD').text("Informe a Disciplina"); }*/
+        if (conta == 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+    </script>
+}
+
+<div class="ui grid specialIDP">
+    <div class="sixteen wide blue text column centered">
+        <h1 class="">Editar Postagem</h1>
+    </div>
+</div>
+<div class="ui grid">
+    <div class="fourteen wide column centered">
+        <div class="ui grid">
+            <div class="sixteen wide column">
+                <form id="formPC" name="formPC" method="post" class="ui fluid form">
+                    <input id="idtopico" name="idtopico" type="hidden" value="@ViewBag.idT" />
+                    <input id="idlogin" name="idlogin" type="hidden" value="@ViewBag.idL" />
+                    <input id="iddisc" name="iddisc" type="hidden" value="@ViewBag.idD" />
+                    <div class="field">
+                        <div class="ui input">
+                            <textarea id="fptg_mensagem" name="fptg_mensagem" class="ckeditor"></textarea>
+                        </div>
+                        <div class="ui blue basic label" id="descricao">
+                            <span class="CM"></span>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <a id="voltar" class="ui black deny left labeled icon button" href="@Url.Action("IEditTopicos", "IForum", new { id = ViewBag.idT })">
+                            Voltar
+                            <i class="backward icon"></i>
+                        </a>
+                        <a id="btnSave" class="ui positive ok right labeled icon button">
+                            <i class="send icon"></i>
+                            Atualizar Postagem
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

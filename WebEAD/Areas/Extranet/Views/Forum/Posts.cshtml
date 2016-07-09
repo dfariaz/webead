@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebEAD.Areas.Extranet.Models.PostsMetadado>
+
+@{
+    Layout = null;
+}
+
+<div class="ui grid specialIDP">
+    <div class="sixteen wide blue text column centered">
+        <div class="ui grid">
+            <div class="thirteen wide column">
+                <h1 class="">Mensagens Postadas | Alunos (Tópico ID: @ViewBag.ID )</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+@foreach (var item2 in Model)
+{
+    <div class="ui grid">
+        <div class="sixteen wide column borda gridf2">
+            <div class="ui grid">
+                <div class="sixteen wide blue column">
+                    <p>Postado Em: @item2.fptg_datapublicacao.ToShortDateString() pelo Aluno: @item2.NomeProfessor</p>
+                </div>
+            </div>
+            <div class="ui grid">
+                <div class="sixteen wide column">
+                    @Html.Raw(item2.fptg_mensagem)
+                </div>
+            </div>
+        </div>
+    </div>
+}

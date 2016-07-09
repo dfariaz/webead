@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Material Didático";
+    Layout = "~/Areas/EAD/Views/Shared/_LayoutDisciplinas.cshtml";
+    
+}
+
+<div class="ui grid ">
+    <div class="sixteen wide blue text column centered">
+        <h1 class="">Material Didático</h1>
+    </div>
+</div>
+
+<div class="ui grid">
+    <div class="four wide column Content">
+        <div class="ui large vertical blue inverted menu">
+            <div class="ui container">
+                @Html.Action("ContentLink", "Content", new { id = ViewBag.IDDisciplina })
+            </div>
+        </div>
+    </div>
+    <div class="twelve wide column Content">
+        <br />
+            @Html.Action("ContentDinamic", "Content", new { id = ViewBag.IDDisciplina })
+    </div>
+</div>
+
+<script type="text/javascript">
+            $(function () {
+                $('<a>', {
+                    class: 'item dalink',
+                    href: '@Url.Action("Index", "Content", new { id = ViewBag.IDDisciplina })',
+                    text: 'Material Didático'
+                }).appendTo('.firstmenu:first');
+
+                $('<a>', {
+                    class: 'item dalink',
+                    href: '@Url.Action("Index", "Courses", new { id = ViewBag.IDDisciplina })',
+                    text: 'Avisos'
+                }).appendTo('.firstmenu:last');
+
+                $('<a>', {
+                    class: 'item dalink',
+                    href: '@Url.Action("Forum", "Courses", new { id = ViewBag.IDDisciplina })',
+                    text: 'Forum de Discussão'
+                }).appendTo('.firstmenu:last');
+            });
+</script>
+

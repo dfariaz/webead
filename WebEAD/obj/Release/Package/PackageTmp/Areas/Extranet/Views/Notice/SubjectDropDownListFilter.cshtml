@@ -1,0 +1,12 @@
+﻿@model IEnumerable<WebEAD.Areas.Extranet.Models.SubjectMetadado>
+
+@{
+    Layout = null;
+}
+<select class="ui dropdown" id="av_dp_idF" name="av_dp_idF" onchange="getvalFiltro(this);">
+    <option value="">Disciplinas</option>
+    @foreach (var item in Model)
+    {
+        <option value="@item.dp_id">@item.dp_descricao</option>
+    }
+</select>

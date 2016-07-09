@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Area do Aluno";
+    Layout = "~/Areas/EAD/Views/Shared/_LayoutPerfil.cshtml";
+}
+
+<div class="ui grid">
+    <div class="eight wide column centered grid4">
+        <div class="ui grid">
+            <div class="sixteen wide column blue borda2">
+                <h2 class="ui blue text">Avisos</h2>
+            </div>
+        </div>
+        <div class="ui grid">
+            <div class="sixteen wide column borda2 grid1">
+                @Html.Action("Notice")
+            </div>
+        </div>
+    </div>
+    <div class="six wide column centered grid2">
+        <div class="ui grid">
+            <div class="sixteen wide column borda2 blue">
+                <h3 class="ui blue text">Bem vindo, @ViewBag.Nome</h3>
+            </div>
+        </div>
+        <div class="ui grid">
+            <div class="sixteen wide column grid3">
+                @Html.Action("BasicInfo")
+            </div>
+        </div>
+        <div class="ui grid">
+            <div class="sixteen wide column borda2 blue">
+                <h2 class="ui blue text">Disciplinas</h2>
+            </div>
+        </div>
+        <div class="ui grid">
+            <div class="sixteen wide column borda2 blue grid2">
+                @Html.Action("Subjects")
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+
+        var systemMessage = @Html.Raw(TempData[WebEAD.Controllers.MasterController.SystemMessage]);
+
+        showMessage(systemMessage);
+    });
+
+
+    function showMessage(message) {
+        toastr[message.type](message.content, message.title);
+    }
+</script>

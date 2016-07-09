@@ -1,0 +1,13 @@
+﻿@model IEnumerable<WebEAD.Areas.Extranet.Models.ClassMetadado>
+
+@{
+    Layout = null;
+}
+
+<select class="ui blue dropdown" onchange="getvalT(this);" id="av_tm_id" name="av_tm_id">
+    <option value="">Turma</option>
+    @foreach (var item in Model)
+    {
+        <option value="@item.tm_id">@item.tm_mod_turma</option>
+    }
+</select>

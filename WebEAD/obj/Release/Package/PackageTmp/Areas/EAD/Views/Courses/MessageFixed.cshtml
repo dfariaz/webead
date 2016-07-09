@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebEAD.Areas.EAD.Models.TopicsMetadado>
+
+@{
+    Layout = null;
+}
+
+<div class="ui grid">
+    <div class="sixteen wide blue text column centered">
+        <h1>
+            Mensagens - @foreach (var item in Model)
+            { @Html.DisplayFor(modelItem => item.NomeTopico); break;
+            }
+        </h1>
+    </div>
+</div>
+
+@foreach (var item2 in Model)
+{
+    if (item2.fixa == 1)
+    {
+        <div class="ui grid">
+            <div class="sixteen wide column gridf2 borda2">
+                <div class="ui grid">
+                    <div class="three wide column blue">
+                        <div class="ui grid">
+                            <div class="sixteen wide column">
+                                Publicado por: <br /> @item2.NomeProfessor
+                            </div>
+                            <div class="sixteen wide column">
+                                Em: <br /> @Html.DisplayFor(modelItem => item2.datapublicacao)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="twelve wide column hri2">
+                        @Html.Raw(item2.mensagem)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="ui grid respGrid">
+            <div class="two wide column">
+                <a class="ui fluid small blue button" id="dialog">Responder</a>
+            </div>
+        </div>
+    }
+    break;
+}

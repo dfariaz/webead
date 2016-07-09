@@ -1,0 +1,19 @@
+﻿@model IEnumerable<WebEAD.Areas.EAD.Models.ProfileMetadado>
+
+@foreach (var item in Model)
+{
+    <div class="ui grid">
+        <div class="sixteen wide column borda2">
+            <div class="ui grid">
+                <div class="ten wide column">
+                    Email: @item.email <br />
+                    Tel. @item.telefone | Cel. @item.celular
+                </div>
+                <div class="five wide column">
+                    RA: @item.al_ra <br /> Turma: @item.turma @item.turno
+                </div>
+            </div>
+        </div>
+    </div>
+    break;
+}

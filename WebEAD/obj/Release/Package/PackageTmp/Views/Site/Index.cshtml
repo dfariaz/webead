@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<div class="ui grid">
+    <div class="fourteen wide column centered">
+        <a name="home"></a>
+        <div class="ajustar">
+            <h1 class="ui header">Index</h1>
+            <img class="ui fluid image" src="/images/wireframe/image.png">
+        </div>
+
+        <a name="quemsomos"></a>
+        <div class="ajustar">
+            @Html.Action("QuemSomos", "Site")
+        </div>
+
+        <a name="curso"></a>
+        <div class="ajustar">
+            @Html.Action("Curso", "Site")
+        </div>
+
+        <a name="faleconosco"></a>
+        <div class="ajustar">
+            @Html.Action("FaleConosco", "Site")
+        </div>
+    </div>
+</div>
+<div class="ui grid">
+    <div class="ui inverted vertical blue footer segment">
+        <div class="ui center aligned container">
+            <img src="assets/images/logo.png" class="ui centered mini image">
+            <div class="ui horizontal inverted small divided link list">
+                <a class="item" href="~/Account">Intranet</a>
+                <a class="item" href="#">Contact Us</a>
+                <a class="item" href="#">Terms and Conditions</a>
+                <a class="item" href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</div>

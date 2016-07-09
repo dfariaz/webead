@@ -1,0 +1,191 @@
+﻿@model WebEAD.Areas.Extranet.Models.UploadArchivesMetadado
+
+@{
+    ViewBag.Title = "Enviar Arquivo";
+    <script type="text/javascript">
+           var jqXHRData = null;
+           $(function () {
+            $('.ui.small.modal.excluir').hide();
+            $('.progress').progress({
+                percent: 0
+            });
+            $("#divUpload").on('click', function () {
+                $('#MyFile').click();
+            });
+
+            $("#hl-start-upload").on('click', function () {
+                var arquivo = $("#MyFile").val();
+                if (arquivo == "") {
+                    toastr.error("Selecione o arquivo, antes de enviar!", "Mensagem do Sistema");
+                }
+                else
+                    $("#form-id").submit();
+            });
+
+            $("#MyFile").on('change', function () {
+                $("#tbx-file-path").val(this.files[0].name);
+            });
+
+            $("#form-id").submit(function () {
+                var formData = new FormData($(this)[0]);
+
+                $.ajax({
+                    url: '@Url.Action("DetailsArchives","Content")',
+                    type: 'POST',
+                    data: formData,
+                    async: true,
+                    success: function (data) {
+                        if (data.message == "Salvo") {
+                            $("#tbx-file-path").val("Nenhum Arquivo Selecionado...");
+                            toastr.success("Arquivo enviado com sucesso!", "Mensagem do Sistema");
+                            window.setTimeout('location.reload()',3000);
+                        }
+                        else {
+                            toastr.error("Arquivo não enviado! Entre em contato com o suporte.", "Mensagem do Sistema");
+                            window.setTimeout('location.reload()', 3000);
+                        }
+                    },
+                    error: function (data) {
+                        toastr.error("Arquivo não enviado! Entre em contato com o suporte.", "Mensagem do Sistema");
+                        window.setTimeout('location.reload()', 3000);
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
+
+                return false;
+            });
+
+            $("#delArquivo").click(function (e) {
+                var valorID = this.getAttribute("data-id");
+                var valorNome = this.getAttribute("data-name");
+                $("#sim").attr('data-ids', '' + valorID + '');
+                $("#sim").attr('data-names', '' + valorNome + '');
+                e.preventDefault();
+                $('.ui.small.modal.excluir')
+                    .modal({
+                        closable: false,
+                        onHide: function () {
+                            return false;
+                        },
+                        onDeny: function () {
+                            return true;
+                        },
+                        onApprove: function () {
+                            return true;
+                        }
+                    })
+                    .modal('show');
+            });
+
+            $("#sim").click(function () {
+                var valorID = this.getAttribute("data-ids");
+                var valorNome = this.getAttribute("data-names");
+                if (valorID != "") {
+                    var dados = {
+                        earq_id: valorID,
+                        earq_nome: valorNome
+                    };
+                    $.ajax({
+                        url: '@Url.Action("DeleteArchives","Content")',
+                        type: 'POST',
+                        data: JSON.stringify(dados),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data.message == "Salvo") {
+                                toastr.success("Arquivo excluído com sucesso! Não é possível desfazer essa ação.", "Mensagem do Sistema");
+                                window.setTimeout('location.reload()', 3000);
+                            }
+                            else {
+                                toastr.error("Arquivo não excluído! Entre em contato com o suporte.", "Mensagem do Sistema");
+                                window.setTimeout('location.reload()', 3000);
+                            }
+                        },
+                        error: function (data) {
+                            toastr.error("Arquivo não excluído! Entre em contato com o suporte.", "Mensagem do Sistema");
+                            window.setTimeout('location.reload()', 3000);
+                        }
+                    });
+                }
+            });
+        });
+           @*function reloadGrid() {
+               $.ajax({
+                   url: '@Url.Action("IDetailsArchivesLista", "IMaterial", new { id = ViewBag.ID })',
+                   dataType: 'html',
+                   data: {},
+                   traditional: true,
+                   type: 'POST',
+                   success: function (content) {
+                       $("#filtroArquivo").html('');
+                       $("#filtroArquivo").html(content);
+                   }
+               });
+           };*@
+    </script>
+}
+<div class="ui grid">
+    <div class="fifteen wide column centered">
+        <div class="ui grid">
+            <div class="six wide column">
+                @using (Html.BeginForm("DetailsArchives", "Content", FormMethod.Post, new { enctype = "multipart/form-data", @id = "form-id" }))
+                {
+                    <div class="ui fluid basic segment">
+                        <h4>Selecione o Arquivo: </h4>
+                        <div class="ui fluid action input">
+
+                            <input type="hidden" id="conteudoID" name="conteudoID" value="@ViewBag.ID" />
+                            <input type="hidden" id="conteudoNome" name="conteudoNome" value="@ViewBag.Nome" />
+                            <input type="text" id="tbx-file-path" value="Nenhum Arquivo Selecionado..." readonly="readonly" />
+                            @Html.TextBoxFor(m => m.MyFile, new { id = "MyFile", type = "file", style = "display: none", accept = ".jpg, .png, .pdf, .doc, .docx" })
+                            <div class="ui blue icon button" id="divUpload">
+                                <i class="folder open outline icon"></i>
+                            </div>
+
+                        </div>
+                        <br />
+                        <a id="hl-start-upload" class="ui right labeled blue icon button">
+                            <i class="cloud upload icon"></i>
+                            Enviar Arquivo
+                        </a>
+                        <a class="ui right labeled black deny icon button" href="@Url.Action("Didactic","Content")">
+                            <i class="backward icon"></i>
+                            Voltar
+                        </a>
+                        <h4>
+                            Regras de Envio:<br />
+                            • São aceitos somente os arquivos do formato: JPG, PNG, PDF, DOC e DOCX <br />
+                        </h4>
+                    </div>
+                }
+            </div>
+            <div class="ten wide column">
+                <div class="fifteen wide column centered filtroArquivo" id="filtroArquivo">
+                    @Html.Action("DetailsArchivesList", "Content", new { id = ViewBag.ID })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui small modal excluir">
+    <div class="header">
+        Deseja realmente excluir o arquivo?
+    </div>
+    <div class="content">
+        <div class="description">
+            <p>Lembre-se: A exclusão não pode ser desfeita depois.</p>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui deny red button" id="nao">
+            <i class="remove icon"></i>
+            Não
+        </div>
+        <div class="ui positive ok green button" id="sim">
+            <i class="checkmark icon"></i>
+            Sim
+        </div>
+    </div>
+</div>

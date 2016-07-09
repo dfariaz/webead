@@ -1,0 +1,320 @@
+﻿@{
+    ViewBag.Title = "Avisos";
+    <script type="text/javascript">
+        var selecionadoD, selecionadoT, selecionadoFiltro, check;
+        var div = $("#filtroForum");
+        $(function () {
+            $('.ui.small.modal.create').hide();
+            $('#ADDavisos').click(function (e) {
+                e.preventDefault();
+                $('.ui.small.modal.create')
+                    .modal({
+                        closable: false,
+                        onHide: function() {
+                            return false;
+                        },
+                        onDeny: function() {
+                            return false;
+                        },
+                        onApprove: function () {
+                            if (!validaCampos()) {
+                                return false;
+                            }
+                        }
+                    })
+                    .modal('show');
+            });
+
+            $('#btnSaveA').click(function () {
+                if ($('#av_g').is(':checked')) {
+                    if (validaCamposGeral()) {
+                        if (validaCampos()) { valid = true; }
+                        else { valid = false; }
+                    }
+                } else if ($('#av_d').is(':checked')) {
+                    if (validaCamposDisciplina()) {
+                        if (validaCampos()) { valid = true; }
+                        else { valid = false; }
+                    }
+                }
+                else {
+                    if (validaCampos()) { valid = true; }
+                    else { valid = false; }
+                }
+                if (valid == true) {
+                    var titulo = $('#av_titulo').val();
+                    var mensagem = $('#av_mensagem').val();
+                    var professor = $("#av_pf_id").val();
+                    var status;
+                    if ($('#av_g').is(':checked')) { status = 1; } else if ($('#av_d').is(':checked')) { status = 3; } else { status = 2; }
+                    if (!$('#av_g').is(':checked')) {
+                        var disciplina = selecionadoD;
+                        var turma = selecionadoT;
+                    }
+                    else if ($('#av_d').is(':checked')) {
+                        disciplina = selecionadoD;
+                        turma = "0";
+                    }
+                    else {
+                        turma = "0";
+                        disciplina = "0";
+                    }
+
+                    var Dados = {
+                        av_titulo: titulo,
+                        av_mensagem: mensagem,
+                        av_tm_id: turma,
+                        av_dp_id: disciplina,
+                        av_geral: status,
+                        av_pf_id: professor
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("CreateNotice", "Notice")",
+                        data: JSON.stringify(Dados),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data.msg == "Salvo") {
+                                toastr.success("Aviso salvo com sucesso!", "Mensagem do Sistema");
+                                window.setTimeout('location.reload()', 3000);
+                            }
+                            else {
+                                toastr.error("Aviso não salvo. Entre em contato com o suporte", "Mensagem do Sistema");
+                                window.setTimeout('location.reload()', 3000);
+                            }
+                        }
+                    });
+                }
+            });
+
+            $("#av_g").click(function () {
+                if ($(this).is(":checked")) {
+                    $("#av_tm_id").prop("disabled", true);
+                    $("#av_dp").prop("disabled", true);
+                    $("#av_d").prop("disabled", true);
+                } else {
+                    $("#av_tm_id").prop("disabled", false);
+                    $("#av_dp").prop("disabled", false);
+                    $("#av_d").prop("disabled", false);
+                }
+            });
+
+            $("#av_d").click(function () {
+                if ($(this).is(":checked")) {
+                    $("#av_tm_id").prop("disabled", true);
+                    $("#av_g").prop("disabled", true);
+                } else {
+                    $("#av_tm_id").prop("disabled", false);
+                    $("#av_g").prop("disabled", false);
+                }
+            });
+
+            $('#btnFiltro').click(function () {
+                var disciplina;
+
+                var selecionadoFinal;
+                if (selecionadoFiltro == null || selecionadoFiltro == "") {
+                    selecionadoFinal = "0";
+                }
+                else { selecionadoFinal = "1"; }
+                if (selecionadoFinal == "0") {
+                    toastr.error("Selecione um item para realizar o filtro!", "Mensagem do Sistema");
+                }
+                else {
+
+                    if (selecionadoFiltro != null) {
+                        disciplina = selecionadoFiltro
+                    } else { disciplina = 0; }
+                    $.ajax({
+                        url: '@Url.Action("GridNoticesFilter", "Notice")',
+                        dataType: 'html',
+                        data: { disciplina: disciplina },
+                        traditional: true,
+                        type: 'POST',
+                        success: function (content) {
+                            $("#filtroAvisos").html('');
+                            $("#filtroAvisos").html(content);
+                            toastr.success("Filtro executado com sucesso!", "Mensagem do Sistema");
+                        }
+                    });
+                };
+            });
+
+            $("#btnremoveFiltro").click(function () {
+                reloadGrid();
+                $('#av_dp_idF option[value=""]').prop('selected', true);
+                selecionadoFiltro = "0";
+            });
+        });
+
+        function reloadGrid() {
+            $.ajax({
+                url: '@Url.Action("GridNotices", "Notice")',
+                dataType: 'html',
+                data: {},
+                traditional: true,
+                type: 'POST',
+                success: function (content) {
+                    $("#filtroAvisos").html('');
+                    $("#filtroAvisos").html(content);
+                }
+            });
+        };
+
+        function limpaCampos() {
+            $('#av_dp_id option[value=""]').prop('selected', true);
+        };
+
+
+        function validaCampos() {
+            var contatudo = 0;
+            $('.validaT').text("");
+            $('.validaM').text("");
+            $('.validaD').text("");
+            $('.validaAT').text("");
+            var titulo = $('#av_titulo').val();
+            var mensagem = $('#av_mensagem').val();
+            var disciplina = selecionadoD;
+            var turma = selecionadoT;
+            if (selecionadoD == null) {
+                disciplina = "";
+            }
+            if (selecionadoT == null) {
+                turma = "";
+            }
+            if (titulo != "") { contatudo = 1; $('.validaT').text(""); } else { $('.validaT').text("Informe o Titulo"); }
+            if (mensagem != "") { contatudo += 1; $('.validaM').text(""); } else { $('.validaM').text("Informe a Mensagem"); }
+            if(!$("#av_g").is(":checked")){
+                if (disciplina != "") { contatudo += 1; $('.validaD').text(""); } else { $('.validaD').text("Informe a Disciplina"); }
+                if ($("#av_d").is(":checked")) { contatudo += 1; $('.validaAT').text(""); }
+                else {
+                    if (turma != "") { contatudo += 1; $('.validaAT').text(""); } else { $('.validaAT').text("Informe a Turma"); }
+                }
+                if (contatudo == 4) {
+                    return true;
+              }
+                else {
+                    return false;
+                }
+            } else {
+                if (contatudo == 2) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+
+        function validaCamposGeral() {
+            $('.validaT').text("");
+            $('.validaM').text("");
+            $('.validaD').text("");
+            var conta = 0;
+            var titulo = $('#av_titulo').val();
+            var mensagem = $('#av_mensagem').val();
+            if ($("#av_g").is(":checked")) {
+                if (titulo != "") { conta = 1; $('.validaT').text(""); } else { $('.validaT').text("Informe o Titulo"); }
+                if (mensagem != "") { conta += 1; $('.validaM').text(""); } else { $('.validaM').text("Informe a Mensagem"); }
+                if (conta == 2) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+
+        function validaCamposDisciplina() {
+            $('.validaT').text("");
+            $('.validaM').text("");
+            $('.validaD').text("");
+            $('.validaAT').text("");
+            var conta = 0;
+            var titulo = $('#av_titulo').val();
+            var mensagem = $('#av_mensagem').val();
+            var disciplina = selecionadoD;
+            if ($("#av_d").is(":checked")) {
+                if (titulo != "") { conta = 1; $('.validaT').text(""); } else { $('.validaT').text("Informe o Titulo"); }
+                if (mensagem != "") { conta += 1; $('.validaM').text(""); } else { $('.validaM').text("Informe a Mensagem"); }
+                if (disciplina != "") { conta += 1; $('.validaD').text(""); } else { $('.validaD').text("Informe a Disciplina"); }
+                if (conta == 3) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+    </script>
+}
+
+<div class="ui grid specialIDP">
+    <div class="sixteen wide blue text column centered">
+        <h1 class="">Avisos</h1>
+    </div>
+</div>
+
+<div class="ui grid centered">
+    <div class="three wide column">
+        <a class="ui labeled blue icon button" id="ADDavisos">
+            <i class="add square icon"></i>
+            Novo Aviso
+        </a>
+    </div>
+    <div class="four wide column"></div>
+    <div class="eight wide column">
+        <div class="ui grid">
+            <div class="two wide text middle column">
+                Filtro:
+            </div>
+            <div class="nine wide column">
+                @Html.Action("SubjectDropDownListFilter", "Notice")
+            </div>
+
+            <div class="one wide column">
+                <a id="btnFiltro" class="ui blue right icon button" title="Filtrar">
+                    <i class="filter icon"></i>
+                </a>
+            </div>
+            <div class="one wide column">
+                <a id="btnremoveFiltro" class="ui blue right icon button" title="Remove Filtro">
+                    <i class="refresh icon"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="ui grid centered">
+    <div class="fifteen wide column" id="filtroAvisos">
+        @Html.Action("GridNotices", "Notice")
+    </div>
+</div>
+
+
+<div class="ui small modal create">
+    @Html.Action("CreateNotice", "Notice")
+</div>
+<div class="ui grid"></div>
+
+
+<script type="text/javascript">
+    function getvalD(sel) {
+        selecionadoD = sel.value;
+    };
+    function getvalT(sel) {
+        selecionadoT = sel.value;
+    };
+    function getvalFiltro(sel) {
+        selecionadoFiltro = sel.value;
+    };
+
+    function showMessage(message) {
+        toastr[message.type](message.content, message.title);
+    };
+</script>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebEAD.Areas.Extranet.Models.PostsMetadado>
+
+@{
+    Layout = "~/Areas/Extranet/Views/Shared/_PdfLayout.cshtml"; ;
+}
+<div class="ui grid"></div>
+<div class="ui grid specialIDP">
+    <div class="sixteen wide blue text column centered">
+        <h1 class="">Mensagens Postadas | Alunos</h1>
+    </div>
+</div>
+<div class="ui grid">
+    <div class="sixteen wide column borda">
+        @foreach (var item2 in Model)
+        {
+            <div class="ui grid">
+                <div class="sixteen wide column borda">
+                    <h4 class="ui blue image header">
+                        <div class="content">
+                            Postado Em: @item2.fptg_datapublicacao.ToShortDateString() pelo Aluno: @item2.NomeProfessor
+                        </div>
+                    </h4>
+                    @Html.Raw(item2.fptg_mensagem)
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="ui grid specialIDP">
+    <div class="sixteen wide blue text column centered gridf2">
+        <h3 class="">Web EAD - Arquivo PDF gerado em @ViewBag.Data por @ViewBag.Nome</h3>
+    </div>
+</div>

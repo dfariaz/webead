@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/sitecss")
+    @RenderSection("head", required: false)
+    @Scripts.Render("~/bundles/modernizr")
+    <title>@ViewBag.Title - Web EAD</title>
+
+</head>
+<body>
+    <div class="ui grid">
+        <div class="fourteen wide column">
+            @RenderBody()
+        </div>
+        <div class="two wide column">
+            <div class="ui right fixed vertical blue inverted menu">
+                <div class="ui container">
+                    <a id="items" class="item" title="home" href="#home">Home</a>
+                    <a id="items" class="item" title="quemsomos" href="#quemsomos">Quem Somos</a>
+                    <a id="items" class="item" title="curso" href="#curso">Curso</a>
+                    <a id="items" class="item" title="faleconosco" href="#faleconosco">Fale Conosco</a>
+                    <div class="right menu">
+                        <div class="item">
+                            <a id="items" class="ui youtube button" title="Account" href="~/Account">Login do Aluno</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/semanticjs")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+    <script>
+        $("a#items").click(function () {
+            $('a').removeClass('active');
+            $(this).addClass(' active');
+
+            /*var title = $(this).attr("title");
+            if (title != "Account") {
+                var url = '';
+                window.location.href = url.replace('Details', 'Index');
+                $(this).addClass(' active');
+            }
+            else {
+                var url = '';
+                window.location.href = url.replace('Details', title);
+            }*/
+        });
+
+
+    </script>
+</body>
+</html>

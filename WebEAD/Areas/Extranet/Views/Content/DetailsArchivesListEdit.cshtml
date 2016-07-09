@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebEAD.Areas.Extranet.Models.ArchivesMetadado>
+
+
+@{
+    Layout = null;
+    WebGrid grid = new WebGrid(Model, canPage: true, rowsPerPage: 6);
+    var link = "" + Request.Url.Host + ":" + Request.Url.Port + "/Archives/";
+}
+
+<div class="header">
+    <div class="ui grid">
+        <div class="twelve wide column">
+            Arquivos Cadastrados
+        </div>
+        <div class="one wide column">
+            <button class="ui small blue close right labeled icon button">
+                <i class="close icon"></i>
+                Fechar
+            </button>
+        </div>
+    </div>
+</div>
+
+@grid.GetHtml(
+    tableStyle: "ui celled inverted blue table foot",
+    footerStyle: "footRow",
+    headerStyle: "headRow",
+    rowStyle: "bodyRow",
+    alternatingRowStyle: "bodyRow",
+    fillEmptyRows: false,
+    mode: WebGridPagerModes.All,
+    firstText: "Primeiro",
+    previousText: "Anterior",
+    nextText: "Próximo",
+    lastText: "Último",
+    columns: grid.Columns(
+        grid.Column("earq_id", header: "ID", format: @<a>@item.earq_id</a>),
+        grid.Column("earq_nome", header: "Titulo", format: @<p>@item.earq_nome</p>),
+        grid.Column("Opções", format: @<text>
+            <button type="button" class="ui small blue icon button" id="linkcopy" data-clipboard-action="copy" data-clipboard-text="@link@item.earq_nome">
+                <i class="copy icon"></i>
+                Copiar Link
+            </button>
+        </text>, style: "", canSort: false))
+)
+
+

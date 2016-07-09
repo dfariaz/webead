@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/intracss")
+    @Styles.Render("~/Content/toastr")
+    @RenderSection("head", required: false)
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/daterangepicker.css" rel="stylesheet" />
+    <title>@ViewBag.Title - Web EAD</title>
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery-ui-1.11.4.js"></script>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/toastr")
+    @Scripts.Render("~/bundles/semanticjs")
+    @Scripts.Render("~/bundles/ckeditor")
+    <script src=@Url.Content("~/Scripts/ckeditor/adapters/jquery.js")></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/moment.js"></script>
+    <script src="~/Scripts/daterangepicker.js"></script>
+    <script src="~/Scripts/jQuery.FileUpload/jquery.fileupload.js"></script>
+    <script src="~/Scripts/jQuery.FileUpload/jquery.fileupload-ui.js"></script>
+    <script src="~/Scripts/jQuery.FileUpload/jquery.iframe-transport.js"></script>
+    <script src="~/Scripts/clipboard.min.js"></script>
+    <div class="ui inverted top attached blue menu primeiromenu">
+        <a class="item">
+            <i class="sidebar icon"></i>
+            Menu Principal
+        </a>
+    </div>
+    <div class="ui grid">
+        <div class="sixteen wide column">
+            <div class="ui left demo vertical inverted labeled sidebar blue menu">
+                <div class="ui container">
+                    <h3 class="item">Menu Principal</h3>
+                </div>
+                <div class="ui container firstmenu">
+                    <a id="itemsP" class="item dalink menus" href="@Url.Action("Index","Main")">Pagina Inicial</a>
+                    <a id="itemsIA" class="item dalink menus" href="@Url.Action("Notices","Notice")">Avisos</a>
+                    <a id="itemsF" class="item dalink" href="@Url.Action("Topics", "Forum")">Forum</a>
+                    <a id="itemsM" class="item dalink" href="@Url.Action("Didactic","Content")">Material Didático</a>
+                    <a id="itemsS" class="item dalink" href="@Url.Action("Logout","Account", new { area = "" })">Sair</a>
+                </div>
+                <div class="ui container ">
+                </div>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    <script>
+        $(function () {
+            $('.left.demo.sidebar').first()
+                .sidebar('attach events', '.attached.primeiromenu');
+        });
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

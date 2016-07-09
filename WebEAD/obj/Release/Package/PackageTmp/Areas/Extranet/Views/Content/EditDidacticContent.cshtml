@@ -1,0 +1,293 @@
+﻿@model WebEAD.Areas.Extranet.Models.ContentMetadado
+
+@{
+    ViewBag.Title = "Novo Conteúdo";
+    if (Model.econt_st_id == 1) { Model.econt_status = true; } else { Model.econt_status = false; }
+    <script type="text/javascript">
+        var selecionadoD = "", selecionadoM = "";
+        var valores = '@Html.Raw(ViewBag.descricaoEcont)';
+        $(function () {
+            $('.ui.small.modal.arquivos').hide();
+            $('#VERArquivo').click(function (e) {
+                e.preventDefault();
+                $('.ui.small.modal.arquivos')
+                    .modal({
+                        onHide: function () {
+                            return false;
+                        },
+                        onDeny: function () {
+                            return false;
+                        },
+                        onApprove: function () {
+                            return false;
+                        }
+                    })
+                    .modal('show');
+            });
+            CKEDITOR.instances.econt_descricao.setData(valores);
+            $('#econt_datapublicacao').daterangepicker({
+                locale: {
+                    format: 'DD/MM/YYYY',
+                    "daysOfWeek": ["D","S","T","Q","Q","S","S"],
+                    "monthNames": ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],
+                    "firstDay": 7
+                },
+                singleDatePicker: true,
+                showDropdowns: true
+            });
+            $('#econt_datafinalizacao').daterangepicker({
+                locale: {
+                    format: 'DD/MM/YYYY',
+                    "daysOfWeek": ["D", "S", "T", "Q", "Q", "S", "S"],
+                    "monthNames": ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+                    "firstDay": 7
+                },
+                singleDatePicker: true,
+                showDropdowns: true
+            });
+
+            $('#btnSave').click(function () {
+                if (validaCampos()) {
+                    var titulo = $('#econt_titulo').val();
+                    var disciplina;
+                    if ($('#DISC').val() != "909090") {
+                        disciplina = $('#DISC').val();
+                    }
+                    else {
+                        disciplina = selecionadoD;
+                    }
+                    var modulo;
+                    if ($('#MOD').val() != "909090") {
+                        modulo = $('#MOD').val();
+                    }
+                    else {
+                        modulo = selecionadoM;
+                    }
+                    var datapub = $('#econt_datapublicacao').val();
+                    var datafin = $('#econt_datafinalizacao').val();
+                    var descricao = CKEDITOR.instances.econt_descricao.getData();
+                    var iecont = $('#econt_id').val();
+                    var status;
+                    if ($('#econt_status').is(':checked')) { status = 1; } else { status = 2; }
+                    var Dados = {
+                        econt_id: iecont,
+                        econt_descricao: descricao,
+                        econt_titulo: titulo,
+                        econt_datapublicacao: datapub,
+                        econt_datafinalizacao: datafin,
+                        econt_dp_id: disciplina,
+                        econt_mod_id: modulo,
+                        econt_st_id: status
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("EditDidacticContent", "Content")",
+                        data: JSON.stringify(Dados),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data.msg == "Salvo") {
+                                toastr.success("Conteúdo atualizado com sucesso!", "Mensagem do Sistema");
+                                window.setTimeout('window.location.href = "@Url.Action("Didactic", "Content")', 3000);
+                            }
+                            else {
+                                toastr.error("Conteúdo não atualizado. Entre em contato com o suporte", "Mensagem do Sistema");
+                                window.setTimeout('window.location.href = "@Url.Action("Didactic", "Content")"', 3000);
+                            }
+                        }
+                    });
+                }
+            });
+
+            var clipboard = new Clipboard('#linkcopy');
+            clipboard.on('success', function (e) {
+                toastr.success("Link Copiado", "Mensagem do Sistema");
+            });
+            clipboard.on('error', function (e) {
+                toastr.success("Link Não Copiado! Entre em contato com o suporte.", "Mensagem do Sistema");
+            });
+
+        });
+        function validaCampos() {
+            $('.validaTitulo').text("");
+            $('.validaDisciplina').text("");
+            $('.validaModulo').text("");
+            $('.validaDataPublicacao').text("");
+            $('.validaDataFinalizacao').text("");
+            $('.validaDescricao').text("");
+            $('.validaStatus').text("");
+            var conta = 0;
+            var titulo = $('#econt_titulo').val();
+            var disciplina;
+            if ($('#DISC').val() != "909090") {
+                disciplina = $('#DISC').val();
+            }
+            else {
+                disciplina = selecionadoD;
+            }
+            var modulo = selecionadoM;
+            if ($('#MOD').val() != "909090") {
+                modulo = $('#MOD').val();
+            }
+            else {
+                modulo = selecionadoM;
+            }
+            var datapub = $('#econt_datapublicacao').val();
+            var datafin = $('#econt_datafinalizacao').val();
+            var descricao = CKEDITOR.instances.econt_descricao.getData();
+            if (descricao != "") { conta = 1; $('.validaDescricao').text(""); } else { $('.validaDescricao').text("Informe a Descrição"); }
+            if (titulo != "") { conta += 1; $('.validaTitulo').text(""); } else { $('.validaTitulo').text("Informe o Titulo"); }
+            if (disciplina != "") { conta += 1; $('.validaDisciplina').text(""); } else { $('.validaDisciplina').text("Informe a Disciplina"); }
+            if (modulo != "") { conta += 1; $('.validaModulo').text(""); } else { $('.validaModulo').text("Informe o Modulo"); }
+            if (datapub != "") { conta += 1; $('.validaDataPublicacao').text(""); } else { $('.validaDataPublicacao').text("Informe a Data de Publicação"); }
+            if (datafin != "") { conta += 1; $('.validaDataFinalizacao').text(""); } else { $('.validaDataFinalizacao').text("Informe a Data de Finalização"); }
+            if (conta == 6) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        };
+    </script>
+}
+
+<div class="ui grid specialIDP">
+    <div class="sixteen wide blue text column centered">
+        <h1 class="">Editar Conteúdo (ID: @Model.econt_id)</h1>
+    </div>
+</div>
+
+<div class="ui grid">
+    <div class="fourteen wide column centered">
+        <form id="formT" name="formT" method="post" class="ui fluid form">
+            <input type="hidden" value="@Model.econt_id" id="econt_id" name="econt_id" />
+            <input type="hidden" value="@Model.econt_dp_id" id="DISC" name="DISC" />
+            <input type="hidden" value="@Model.econt_mod_id" id="MOD" name="MOD" />
+            <div class="ui grid">
+                <div class="six wide column">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            @Html.TextBoxFor(model => model.econt_titulo, new { placeholder = "Titulo" })
+                            <i class="font icon"></i>
+                            <div class="ui blue basic label" id="titulo">
+                                <span class="validaTitulo"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            @Html.Action("SubjectDropDownList", "Content")
+                            <div class="ui blue basic label" id="disciplinas">
+                                <span class="validaDisciplina"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            @Html.Action("ModuleDropDownList", "Content")
+                            <div class="ui blue basic label" id="disciplinas">
+                                <span class="validaModulo"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="one wide column">
+                </div>
+                <div class="five wide column">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <input type="text" name="econt_datapublicacao" id="econt_datapublicacao" value="@Model.econt_datapublicacao.ToShortDateString()" placeholder="Data Publicação" />
+                            <i class="calendar icon"></i>
+                            <div class="ui blue basic label" id="datapublicacao">
+                                <span class="validaDataPublicacao"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <input type="text" name="econt_datafinalizacao" id="econt_datafinalizacao" value="@Model.econt_datafinalizacao.ToShortDateString()" placeholder="Data Finalização" />
+                            <i class="calendar icon"></i>
+                            <div class="ui blue basic label" id="datafinalizacao">
+                                <span class="validaDataFinalizacao"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <div class="ui checkbox">
+                                @Html.CheckBoxFor(model => model.econt_status)
+                                <label>Ativo?</label>
+                            </div>
+                            <div class="ui blue basic label" id="status">
+                                <span class="validaStatus"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="four wide column">
+                    <div class="actions">
+                        <a id="voltar" class="ui black deny right labeled icon button" href="@Url.Action("Didactic", "Content")">
+                            Voltar
+                            <i class="backward icon"></i>
+                        </a>
+                        <a id="btnSave" class="ui positive ok right labeled icon button">
+                            Salvar
+                            <i class="save icon"></i>
+                        </a>
+                        <br />
+                        <br />
+                        <a class="ui blue right labeled icon button" href="@Url.Action("DetailsArchives","Content", new { id = Model.econt_id })">
+                            Enviar Arquivo
+                            <i class="send icon"></i>
+                        </a>
+                        <br />
+                        <br />
+                        <a id="VERArquivo" class="ui blue ok right labeled icon button">
+                            Ver Arquivos Cadastrados
+                            <i class="find icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="field">
+                <div class="ui blue basic label" id="descricao">
+                    <span class="validaDescricao"></span>
+                </div>
+                <div class="ui left icon input">
+                    <textarea class="ckeditor" id="econt_descricao" name="econt_descricao" placeholder="Descrição"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="ui small modal arquivos">
+    @Html.Action("DetailsArchivesListEdit", "Content", new { id = ViewBag.ID })
+</div>
+
+<script type="text/javascript">
+    var IDD = $('#DISC').val();
+    var IMM = $('#MOD').val();
+    if (IDD != "") {
+        $('#econt_dp_id option[value=' + IDD + ']').prop('selected', true);
+        selecionadoD = IDD;
+    };
+    if (IMM != "") {
+        $('#econt_mod_id option[value=' + IDD + ']').prop('selected', true);
+        selecionadoM = IMM;
+    };
+    function getvalD(sel) {
+        selecionadoD = sel.value;
+        $('#DISC').val('909090');
+    };
+
+    function getvalM(sel) {
+        selecionadoM = sel.value;
+        $('#MOD').val('909090');
+    };
+
+    function showMessage(message) {
+        toastr[message.type](message.content, message.title);
+    };
+</script>

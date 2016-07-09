@@ -1,0 +1,9 @@
+C:\Users\Deivid\Desktop\Asp.net\Samples\Identity\AspNet.Identity.MySQL\bin\Release\AspNet.Identity.MySQL.dll.config
+C:\Users\Deivid\Desktop\Asp.net\Samples\Identity\AspNet.Identity.MySQL\bin\Release\AspNet.Identity.MySQL.dll
+C:\Users\Deivid\Desktop\Asp.net\Samples\Identity\AspNet.Identity.MySQL\bin\Release\AspNet.Identity.MySQL.pdb
+C:\Users\Deivid\Desktop\Asp.net\Samples\Identity\AspNet.Identity.MySQL\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Deivid\Desktop\Asp.net\Samples\Identity\AspNet.Identity.MySQL\bin\Release\MySql.Data.dll
+C:\Users\Deivid\Desktop\Asp.net\Samples\Identity\AspNet.Identity.MySQL\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Deivid\Desktop\Asp.net\Samples\Identity\AspNet.Identity.MySQL\obj\Release\AspNet.Identity.MySQL.csprojResolveAssemblyReference.cache
+C:\Users\Deivid\Desktop\Asp.net\Samples\Identity\AspNet.Identity.MySQL\obj\Release\AspNet.Identity.MySQL.dll
+C:\Users\Deivid\Desktop\Asp.net\Samples\Identity\AspNet.Identity.MySQL\obj\Release\AspNet.Identity.MySQL.pdb

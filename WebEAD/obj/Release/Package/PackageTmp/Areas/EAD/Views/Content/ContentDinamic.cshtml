@@ -1,0 +1,47 @@
+﻿@model WebEAD.Areas.EAD.Models.ContentMetadado
+
+@{
+    Layout = "";
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#iframe').ready(function () {
+                $('#iframe').contents().find('#download').css("display", "none");
+            });
+        });
+        @*var filepath = '@Url.Action("Archives","App_Data",new { area = "" })/@Model.econt_pdf';*@
+    </script>
+}
+
+<div class="ui grid">
+    <div class="twelve wide blue text column">
+        <h3 class="">@Model.econt_titulo</h3>
+    </div>
+    <div class="four wide blue text column">
+        <h4 class="">Publicado em: @Model.econt_datapublicacao.ToShortDateString() - Finaliza em: @Model.econt_datafinalizacao.ToShortDateString()</h4>
+    </div>
+</div>
+<div class="ui grid">
+    <div class="sixteen wide column">
+        <h3>Descrição:</h3><br />
+        @Html.Raw(Model.econt_descricao)
+    </div>
+</div>
+@if (Model.econt_pdf != "")
+{
+    <div class="ui grid">
+        <div class="fifteen wide column">
+            <h3>Conteúdo PDF:</h3><br />
+            <iframe src="/ViewerJS/#../Archives/@Model.econt_pdf" id="iframe" style="height: 500px; width: 100%;" allowfullscreen webkitallowfullscreen></iframe>
+        </div>
+    </div>
+}
+
+@if(Model.econt_video != null)
+{
+    <div class="ui grid">
+        <div class="sixteen wide column">
+            <h3>Conteúdo Vídeo:</h3><br />
+            @Model.econt_video
+        </div>
+    </div>
+}
